@@ -39,8 +39,12 @@ public class MinionController : MonoBehaviour
 
     private void Move()
     {
-        var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime).normalized;
-        _rb.transform.position = (new Vector3(vector3.x, 0f, vector3.z));
+        var heading = target.position - transform.position;
+        heading.Normalize();
+        heading.y = 0;
+        heading *= _speed *Time.deltaTime;
+        /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
+        _rb.transform.position += heading;
     }
 
 }
