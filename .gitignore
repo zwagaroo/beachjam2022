@@ -2,6 +2,8 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
+
+
 /Beach Jam 2022/[Ll]ibrary/
 /Beach Jam 2022/[Tt]emp/
 /Beach Jam 2022/[Oo]bj/
@@ -70,3 +72,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /Beach Jam 2022/[Aa]ssets/[Ss]treamingAssets/aa.meta
 /Beach Jam 2022/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# include meta files
+!*.*.meta
