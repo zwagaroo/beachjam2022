@@ -2,41 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinionController : MonoBehaviour
-{
-    [SerializeField] private Transform target;
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private float minDist;
-    private bool farAway;
+public class EnemyController : MonoBehaviour
+    {
+    //target    
+    [SerializeField] public Transform target;
+    [SerializeField] public Rigidbody _rb;
+    [SerializeField] public float _speed = 5;
+    //have to be this far away at least
+    [SerializeField] public float minDist;
+    public bool farAway;
+
+    //Point of attack
     public Transform attackPoint;
+    //Range of attack
     public float attackRange;
+
+    //Damage of attack
     public float attackDamage;
+
+    //Attacks players so it's attacks affect the player layer
     public LayerMask playerLayer;
+
+    //Speed of attack in seconds (pause motion on attacks)
     public float attackSpeedSeconds;
+    
+    //force of knockback of attacks
     public float knockbackForce;
     
     //[SerializeField] private float _turnSpeed = 360;
 
-    private Vector3 heading; 
-    private bool attacking;
+    //direction where enemy is heading
+    public Vector3 heading; 
+
+    //attacking or not
+    public bool attacking;
 
 
+    
     void Update()
     {
+        //detect players in the range of it's attack
         if(detectPlayer()){
+            //start attack routine
             StartCoroutine(AttackCoroutine());
         }
     }
-    private void FixedUpdate()
+
+    void FixedUpdate()
     {
-        //Follow();
-        //Look();
-        if (Vector3.Distance(this.transform.position, target.position) > minDist)
-        {
-            
+        //movement controls
             Move();
-        }
     }
 
     //private void Follow()
@@ -53,20 +68,27 @@ public class MinionController : MonoBehaviour
     //}
 
 
-
-    private void Move()
+    //can be overriden
+    public virtual void Move()
     {
-        if(attacking){return;}
-        heading = target.position - transform.position;
-        heading.Normalize();
-        heading.y = 0;
-        Vector3 moveVector = heading * _speed * Time.deltaTime;
-        /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
-        _rb.transform.position += moveVector;
-        attackPoint.position = _rb.transform.position + heading * 1.0f;
+        if (Vector3.Distance(this.transform.position, target.position) > minDist)
+        {
+            //if attacking do not move
+            if(attacking){return;}
+            //else go towards target position
+            heading = target.position - transform.position;
+            heading.Normalize();
+            heading.y = 0;
+            Vector3 moveVector = heading * _speed * Time.deltaTime;
+            /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
+            _rb.transform.position += moveVector;
+            //attack point will move
+            attackPoint.position = _rb.transform.position + heading * 1.0f;
+        }
     }
 
-    private bool detectPlayer(){
+    //player detection can be overriden
+    public virtual bool detectPlayer(){
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
         if(hitPlayer.Length != 0){
             return true;
@@ -74,14 +96,16 @@ public class MinionController : MonoBehaviour
         return false;
     }
 
-    private IEnumerator AttackCoroutine(){
+    //attack routine can be overriden
+    public virtual IEnumerator AttackCoroutine(){
         attacking = true;
         yield return new WaitForSeconds(attackSpeedSeconds);
         Attack();
         attacking = false;
     }
 
-    private void Attack(){
+    //attacking can be overriden
+    public virtual void Attack(){
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
         if(hitPlayer.Length != 0){ 
             foreach(Collider player in hitPlayer){
