@@ -36,7 +36,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack(){
         if(!canAttack){return;}
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+
+        Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
+        //Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
         //damage hit enemies
         foreach(Collider enemy in hitEnemies){
             enemy.gameObject.GetComponent<Health>().changeHealth(-attackDamage);
