@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     public float attackRange = .8f;
     public Transform attackPoint;
     public LayerMask enemyLayer;
