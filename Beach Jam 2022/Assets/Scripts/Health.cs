@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-
+    public Slider healthBar;
     public double initialHealth;
     private double currentHealth;
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = initialHealth;
+        healthBar.maxValue = (float)initialHealth;
+        healthBar.value = (float)currentHealth;
         print(currentHealth);
     }
 
@@ -19,7 +22,8 @@ public class Health : MonoBehaviour
         if (isInvincible) return;
 
         currentHealth += change;
-        
+        healthBar.value = (float)currentHealth;
+
         print(currentHealth);
         StartCoroutine(BecomeTemporarilyInvincible());
     }
