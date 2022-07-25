@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
+    [SerializeField] private Animator[] tentacleAnims;
     public float attackRange = .8f;
     public Transform attackPoint;
     public LayerMask enemyLayer;
@@ -21,7 +23,6 @@ public class PlayerAttack : MonoBehaviour
         canAttack = false;
 
         yield return new WaitForSeconds(coolDownSeconds);
-
         canAttack = true;
         Debug.Log("Player can attack");
     
@@ -36,8 +37,14 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack(){
         if(!canAttack){return;}
-        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+
+        Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
+        //Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
         //damage hit enemies
+        foreach (Animator ani in tentacleAnims){
+            ani.SetTrigger("isAttacking");
+        }
+        anim.SetTrigger("isAttacking");
         foreach(Collider enemy in hitEnemies){
             enemy.gameObject.GetComponent<Health>().changeHealth(-attackDamage);
             Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
