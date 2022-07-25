@@ -86,11 +86,10 @@ public class MinionController : MonoBehaviour
         if(hitPlayer.Length != 0){ 
             foreach(Collider player in hitPlayer){
                 player.gameObject.GetComponent<Health>().changeHealth(-1*attackDamage);
-                Vector3 dir = player.gameObject.transform.position - transform.position;
-                dir = dir.normalized;
-                dir.y = 0;
-                print(dir);
-                player.gameObject.GetComponent<Rigidbody>().velocity = dir*knockbackForce;
+                Vector3 knockbackDir = player.gameObject.transform.position - transform.position;
+                knockbackDir = knockbackDir.normalized;
+                knockbackDir.y = 0;
+                player.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir*knockbackForce;
             }
         }
     }

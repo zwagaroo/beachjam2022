@@ -34,13 +34,13 @@ public class Health : MonoBehaviour
 
     private IEnumerator BecomeTemporarilyInvincible()
     {
-        Debug.Log("Player turned invincible!");
+        Debug.Log(this.name +"turned invincible!");
         isInvincible = true;
 
         yield return new WaitForSeconds(invincibilityDurationSeconds);
 
         isInvincible = false;
-        Debug.Log("Player is no longer invincible!");
+        Debug.Log(this.name +"is no longer invincible!");
     
     }
 }

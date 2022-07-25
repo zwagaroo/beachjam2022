@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 816635459}
   - component: {fileID: 816635458}
+  - component: {fileID: 816635462}
   - component: {fileID: 816635461}
   - component: {fileID: 816635460}
   - component: {fileID: 816635457}
@@ -321,6 +322,21 @@ MonoBehaviour:
     m_Bits: 128
   attackSpeedSeconds: 1
   knockbackForce: 10
+--- !u!114 &816635462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816635456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b292dfc708975b44b4c88c3cf21cc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialHealth: 5
+  invincibilityDurationSeconds: 0.5
+  isInvincible: 0
 --- !u!1 &834272956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,6 +1047,14 @@ PrefabInstance:
       propertyPath: attackPoint
       value: 
       objectReference: {fileID: 1006495161}
+    - target: {fileID: 6580564183772732916, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: attackDamage
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6580564183772732916, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: knockbackForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6580564183772732916, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
       propertyPath: coolDownSeconds
       value: 1

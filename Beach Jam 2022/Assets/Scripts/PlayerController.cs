@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
         //detect new inputs
         _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         
-        //check if forward or backwards
+        //directional detection for the player
         if(!isBackwards && _input.z > 0){
             isBackwards = true;
             isForwards = false;
@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour {
             isBackwards = false;
             isForwards = true;
         }
-     
 
         //check if right or left only (if both right and forward then it's forward)
         if(!isRight && _input.x > 0 && _input.z == 0){
@@ -71,6 +70,7 @@ public class PlayerController : MonoBehaviour {
         anim.SetBool("isRight", isRight);
         anim.SetBool("isLeft", isLeft);
         anim.SetBool("isMoving", isMoving);
+
         //set where the attackpoint is located
         if(isRight){
             attackPoint.position = gameObject.transform.position + new Vector3(1.2f, 0,-1.2f);
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
             attackPoint.position = gameObject.transform.position + new Vector3(-1.2f, 0, -1.2f);
         }
 
-
+        //detect jumping
         if(Input.GetButtonDown("Jump") && isGrounded){
             _rb.velocity += new Vector3(0f,jumpForce, 0f);     
         }
