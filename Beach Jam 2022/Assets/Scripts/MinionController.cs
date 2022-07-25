@@ -9,8 +9,12 @@ public class MinionController : MonoBehaviour
     [SerializeField] private float _speed = 5;
     [SerializeField] private float minDist;
     private bool farAway;
+    public Transform attackPoint;
+    
+    
     //[SerializeField] private float _turnSpeed = 360;
 
+/*     private Vector3 heading;  */
     void Update()
     {
     }
@@ -36,6 +40,8 @@ public class MinionController : MonoBehaviour
     //    var rot = Quaternion.LookRotation(_input.ToIso(), Vector3.up);
     //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
     //}
+
+
 
     private void Move()
     {

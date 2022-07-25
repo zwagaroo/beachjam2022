@@ -350,9 +350,14 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/MinionController.cs"
+"Assets/Scripts/BasicEnemyAttack.cs"
 "Assets/Scripts/CameraFollow.cs"
+"Assets/Scripts/DamageOnContact.cs"
+"Assets/Scripts/Health.cs"
 "Assets/Scripts/isometricMovementHelpers.cs"
+"Assets/Scripts/MinionController.cs"
+"Assets/Scripts/OnHit.cs"
+"Assets/Scripts/PlayerAttack.cs"
 "Assets/Scripts/PlayerController.cs"
 -langversion:9.0
 
