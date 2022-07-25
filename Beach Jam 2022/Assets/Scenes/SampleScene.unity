@@ -304,16 +304,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816635456}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d84fda0c008d5240856c8a29d82d441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1244614803}
   _rb: {fileID: 816635458}
-  _speed: 5
-  minDist: 0
-  attackPoint: {fileID: 0}
+  _speed: 1
+  minDist: 1
+  attackPoint: {fileID: 979005685}
+  attackRange: 2
+  attackDamage: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackSpeedSeconds: 1
+  knockbackForce: 10
 --- !u!1 &834272956
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +543,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1006495161}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: attackpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +671,7 @@ GameObject:
   - component: {fileID: 1554229919}
   - component: {fileID: 1554229918}
   - component: {fileID: 1554229917}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -932,10 +939,26 @@ PrefabInstance:
       propertyPath: invincibilityDurationSeconds
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5391054396656867840, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391054397365487793, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391054397365487799, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5391054397713672592, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5391054397713672593, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: SR
+      value: 
+      objectReference: {fileID: 5391054396809853192}
     - target: {fileID: 5391054397713672593, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
       propertyPath: anim
       value: 
@@ -997,6 +1020,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5391054397713672599, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5391054397713672599, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
@@ -1017,5 +1044,10 @@ PrefabInstance:
 --- !u!95 &5391054396809853190 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5391054397365487792, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+  m_PrefabInstance: {fileID: 5391054396809853189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5391054396809853192 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5391054397365487793, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
   m_PrefabInstance: {fileID: 5391054396809853189}
   m_PrefabAsset: {fileID: 0}

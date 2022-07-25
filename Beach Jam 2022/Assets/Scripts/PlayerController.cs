@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float jumpForce;
     [SerializeField] private Animator anim;
+    [SerializeField] private SpriteRenderer SR;
     private bool isGrounded = false;
     private bool isForwards = true;
     private bool isBackwards = false;
     private bool isRight = false;
     private bool isLeft = false;
+    private bool isMoving = false;
     private Vector3 _input;
     public bool canMove = true;
     public Transform attackPoint;
@@ -54,10 +56,21 @@ public class PlayerController : MonoBehaviour {
             isRight = false;
             isLeft = false;
         }
+        if(!isMoving && _input.magnitude != 0){
+            isMoving = true;
+        } else if (isMoving && _input.magnitude == 0){
+            isMoving = false;
+        }
+
+        if(isMoving && isRight && !isLeft && !isBackwards){
+            SR.flipX = true;
+        } else{
+            SR.flipX =false;
+        }
         anim.SetBool("isBackwards", isBackwards);
         anim.SetBool("isRight", isRight);
         anim.SetBool("isLeft", isLeft);
-
+        anim.SetBool("isMoving", isMoving);
         //set where the attackpoint is located
         if(isRight){
             attackPoint.position = gameObject.transform.position + new Vector3(1.2f, 0,-1.2f);

@@ -8,7 +8,9 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPoint;
     public LayerMask enemyLayer;
 
+
     public bool canAttack = true;
+    public float attackDamage;
     public float coolDownSeconds;
     //coroutine to prevent attack spam
 

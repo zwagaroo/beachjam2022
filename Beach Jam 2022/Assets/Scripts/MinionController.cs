@@ -10,13 +10,23 @@ public class MinionController : MonoBehaviour
     [SerializeField] private float minDist;
     private bool farAway;
     public Transform attackPoint;
-    
+    public float attackRange;
+    public float attackDamage;
+    public LayerMask playerLayer;
+    public float attackSpeedSeconds;
+    public float knockbackForce;
     
     //[SerializeField] private float _turnSpeed = 360;
 
-/*     private Vector3 heading;  */
+    private Vector3 heading; 
+    private bool attacking;
+
+
     void Update()
     {
+        if(detectPlayer()){
+            StartCoroutine(AttackCoroutine());
+        }
     }
     private void FixedUpdate()
     {
@@ -24,6 +34,7 @@ public class MinionController : MonoBehaviour
         //Look();
         if (Vector3.Distance(this.transform.position, target.position) > minDist)
         {
+            
             Move();
         }
     }
@@ -45,12 +56,43 @@ public class MinionController : MonoBehaviour
 
     private void Move()
     {
-        var heading = target.position - transform.position;
+        if(attacking){return;}
+        heading = target.position - transform.position;
         heading.Normalize();
         heading.y = 0;
-        heading *= _speed *Time.deltaTime;
+        Vector3 moveVector = heading * _speed * Time.deltaTime;
         /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
-        _rb.transform.position += heading;
+        _rb.transform.position += moveVector;
+        attackPoint.position = _rb.transform.position + heading * 1.0f;
+    }
+
+    private bool detectPlayer(){
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+        if(hitPlayer.Length != 0){
+            return true;
+        }
+        return false;
+    }
+
+    private IEnumerator AttackCoroutine(){
+        attacking = true;
+        yield return new WaitForSeconds(attackSpeedSeconds);
+        Attack();
+        attacking = false;
+    }
+
+    private void Attack(){
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+        if(hitPlayer.Length != 0){ 
+            foreach(Collider player in hitPlayer){
+                player.gameObject.GetComponent<Health>().changeHealth(-1*attackDamage);
+                Vector3 dir = player.gameObject.transform.position - transform.position;
+                dir = dir.normalized;
+                dir.y = 0;
+                print(dir);
+                player.gameObject.GetComponent<Rigidbody>().velocity = dir*knockbackForce;
+            }
+        }
     }
 
 }
