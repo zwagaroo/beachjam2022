@@ -37,14 +37,15 @@ public class EnemyController : MonoBehaviour
     //attacking or not
     public bool attacking;
 
-
+    public bool canAttack = true;
     
     void Update()
     {
-        //detect players in the range of it's attack
         if(detectPlayer()){
             //start attack routine
-            StartCoroutine(AttackCoroutine());
+            if(!attacking){
+                StartCoroutine(AttackCoroutine());
+            }
         }
     }
 
@@ -98,6 +99,7 @@ public class EnemyController : MonoBehaviour
 
     //attack routine can be overriden
     public virtual IEnumerator AttackCoroutine(){
+        if(!canAttack){ yield break; }
         attacking = true;
         yield return new WaitForSeconds(attackSpeedSeconds);
         Attack();

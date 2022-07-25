@@ -6,18 +6,8 @@ public class NetBoatController : EnemyController
 {
     public float acceleration;
     public float maxSpeed;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    public float coolDownSeconds;
+ 
     public override void Move() {
         //if attacking do not move
         if(attacking){return;}
@@ -55,4 +45,30 @@ public class NetBoatController : EnemyController
 
         }
     }
+
+    private IEnumerator AttackBuffer()
+    {
+        Debug.Log(this.name +"Cannot attack");
+        canAttack = false;
+
+        yield return new WaitForSeconds(coolDownSeconds);
+
+        canAttack = true;
+        Debug.Log(this.name +"can attack");
+    
+    }
+
+    public override void Attack(){
+        print("running");
+        Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
+        if(hitPlayer.Length != 0){ 
+            foreach(Collider player in hitPlayer){
+                player.gameObject.GetComponent<Health>().changeHealth(-1*attackDamage);
+                StartCoroutine(player.gameObject.GetComponent<PlayerController>().speedChange(.5f, 3));
+            }
+        }
+        StartCoroutine(AttackBuffer());
+    }
+
+
 }
