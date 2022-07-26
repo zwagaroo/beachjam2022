@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
     public Slider healthBar;
     public double initialHealth;
     private double currentHealth;
+    [SerializeField]
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,8 +43,16 @@ public class Health : MonoBehaviour
         Debug.Log(this.name +"turned invincible!");
         isInvincible = true;
 
+        if(anim != null)
+        {
+            anim.SetBool("isInvincible", true);
+        }
         yield return new WaitForSeconds(invincibilityDurationSeconds);
 
+        if(anim != null)
+        {
+            anim.SetBool("isInvincible", false);
+        }
         isInvincible = false;
         Debug.Log(this.name +"is no longer invincible!");
     
