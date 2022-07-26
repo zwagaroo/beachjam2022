@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NavalMine : MonoBehaviour
 {
-	GameObject explosionPrefab;
+	public GameObject explosionPrefab;
 	
     // Start is called before the first frame update
     IEnumerator Start()
