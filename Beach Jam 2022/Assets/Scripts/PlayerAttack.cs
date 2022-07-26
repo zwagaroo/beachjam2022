@@ -46,11 +46,14 @@ public class PlayerAttack : MonoBehaviour
         }
         anim.SetTrigger("isAttacking");
         foreach(Collider enemy in hitEnemies){
-            enemy.gameObject.GetComponent<Health>().changeHealth(-attackDamage);
-            Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
-            knockbackDir = knockbackDir.normalized;
-            knockbackDir.y = 0;
-            enemy.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir*knockbackForce;
+            if (enemy != null)
+            {
+                enemy.gameObject.GetComponent<Health>().changeHealth(-attackDamage);
+                Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
+                knockbackDir = knockbackDir.normalized;
+                knockbackDir.y = 0;
+                enemy.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir * knockbackForce;
+            }
         }
         StartCoroutine(AttackBuffer());
     }
