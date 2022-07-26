@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyExplosion : MonoBehaviour
+public class Explosion : MonoBehaviour
 {
-    public ParticleSystem particleSystem;
+    ParticleSystem particleSystem;
+
+    public AudioClip explosionSound;
+
     // Start is called before the first frame update
     void Start()
     {
-        particleSystem = this.GetComponent<ParticleSystem>();
+        GetComponent<AudioSource>().PlayOneShot(explosionSound, 1.5f);
+        particleSystem = GetComponent<ParticleSystem>();
         StartCoroutine(DeathTimer());
     }
 
@@ -16,11 +20,5 @@ public class DestroyExplosion : MonoBehaviour
     {
         yield return new WaitUntil(() => particleSystem.isPlaying == false);
         Destroy(this.gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

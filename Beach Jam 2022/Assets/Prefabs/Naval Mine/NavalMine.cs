@@ -6,15 +6,13 @@ public class NavalMine : MonoBehaviour
 {
 	public GameObject explosionPrefab;
 	
-    // Start is called before the first frame update
     IEnumerator Start()
     {
-        //Testing Code
+        //Testing Code, comment out later
         yield return new WaitForSeconds(3f);
         Explode();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -23,7 +21,6 @@ public class NavalMine : MonoBehaviour
 	void Explode()
 	{
 		Instantiate(explosionPrefab, transform.position, transform.rotation);
-		// Create Explosion here
 		Destroy(gameObject);
 	}
 }
