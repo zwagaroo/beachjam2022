@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinionController : MonoBehaviour
+public class BoatController : MonoBehaviour
 {
     public Transform target;
     [SerializeField] private Rigidbody _rb;
@@ -15,25 +15,27 @@ public class MinionController : MonoBehaviour
     public LayerMask playerLayer;
     public float attackSpeedSeconds;
     public float knockbackForce;
-    
+
     //[SerializeField] private float _turnSpeed = 360;
 
-    private Vector3 heading; 
+    private Vector3 heading;
     private bool attacking;
 
 
     void Update()
     {
-        //if(detectPlayer()){
-        //    StartCoroutine(AttackCoroutine());
-        //}
+        if (detectPlayer())
+        {
+            StartCoroutine(AttackCoroutine());
+        }
     }
     private void FixedUpdate()
     {
         //Follow();
         //Look();
         if (Vector3.Distance(this.transform.position, target.position) > minDist)
-        {            
+        {
+
             Move();
         }
     }
@@ -55,42 +57,46 @@ public class MinionController : MonoBehaviour
 
     private void Move()
     {
-        if(attacking){return;}
+        if (attacking) { return; }
         heading = target.position - transform.position;
         heading.Normalize();
         heading.y = 0;
         Vector3 moveVector = heading * _speed * Time.deltaTime;
-        Vector3 direction = Vector3.RotateTowards(-_rb.transform.right, _rb.transform.position + moveVector, 2*Mathf.PI, 0);
-        transform.rotation = Quaternion.LookRotation(direction);
         /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
         _rb.transform.position += moveVector;
         attackPoint.position = _rb.transform.position + heading * 1.0f;
     }
 
-    private bool detectPlayer(){
+    private bool detectPlayer()
+    {
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
-        if(hitPlayer.Length != 0){
+        if (hitPlayer.Length != 0)
+        {
             return true;
         }
         return false;
     }
 
-    private IEnumerator AttackCoroutine(){
+    private IEnumerator AttackCoroutine()
+    {
         attacking = true;
         yield return new WaitForSeconds(attackSpeedSeconds);
         Attack();
         attacking = false;
     }
 
-    private void Attack(){
+    private void Attack()
+    {
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
-        if(hitPlayer.Length != 0){ 
-            foreach(Collider player in hitPlayer){
-                player.gameObject.GetComponent<Health>().changeHealth(-1*attackDamage);
+        if (hitPlayer.Length != 0)
+        {
+            foreach (Collider player in hitPlayer)
+            {
+                player.gameObject.GetComponent<Health>().changeHealth(-1 * attackDamage);
                 Vector3 knockbackDir = player.gameObject.transform.position - transform.position;
                 knockbackDir = knockbackDir.normalized;
                 knockbackDir.y = 0;
-                player.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir*knockbackForce;
+                player.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir * knockbackForce;
             }
         }
     }
