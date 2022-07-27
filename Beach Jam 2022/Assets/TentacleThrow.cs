@@ -21,9 +21,10 @@ public class TentacleThrow : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Vector3 mousepos = mCamera.ScreenToWorldPoint(Input.mousePosition);
-            var newball = Instantiate(ballPrefab, new Vector3(mousepos.x, mousepos.y, mousepos.z), Quaternion.Euler(30,45,0));
-            newball.transform.parent = projectileCanvas.transform;
+            Vector3 heading = mCamera.ScreenToWorldPoint(Input.mousePosition) - mCamera.ScreenToWorldPoint(player.position);
+            //Vector3 mousepos = mCamera.ScreenToWorldPoint(Input.mousePosition);
+            var newball = Instantiate(ballPrefab, player.position, player.rotation);
+            newball.GetComponent<InkProjectile>().target = new Vector3(heading.y*Mathf.Cos(30)*Mathf.Sin(45) - heading.x*Mathf.Sin(45), 2f, heading.y * Mathf.Cos(30) * Mathf.Sin(45) + heading.x * Mathf.Sin(45));
 
         }
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6233837292545193908}
   - component: {fileID: 6233837292545193909}
+  - component: {fileID: 4678556022941566969}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -24,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6233837292545193898}
-  m_LocalRotation: {x: 0.19015804, y: -0.356024, z: 0.9089127, w: -0.10471147}
+  m_LocalRotation: {x: 0.19016084, y: -0.35602272, z: 0.90891236, w: -0.10471393}
   m_LocalPosition: {x: 6.34, y: 4.37, z: -1.27}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
@@ -84,3 +85,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4678556022941566969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233837292545193898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4070088785d804585d41c3fa3a024e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {x: 0, y: 0, z: 0}
+  moveSpeed: 2
