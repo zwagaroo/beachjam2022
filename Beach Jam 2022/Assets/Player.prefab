@@ -609,7 +609,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: caf0fe382f0022c498e6e0890610da5e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -732,6 +732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58b23788ed261004a9e25241f6f4a3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  tentacleAnims: []
   attackRange: 0.8
   attackPoint: {fileID: 1006495161}
   enemyLayer:
@@ -741,6 +743,7 @@ MonoBehaviour:
   canAttack: 1
   attackDamage: 2
   coolDownSeconds: 1
+  lManager: {fileID: 0}
 --- !u!114 &3645545334106746087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,6 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1578686379}
   initialHealth: 100
+  anim: {fileID: 0}
   invincibilityDurationSeconds: 1
   isInvincible: 0
 --- !u!114 &5391054397713672593

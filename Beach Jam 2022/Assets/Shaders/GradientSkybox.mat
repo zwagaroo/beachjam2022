@@ -26,6 +26,6 @@ Material:
     - _NORM: 1
     - _Norm: 1
     m_Colors:
-    - _InnerColor: {r: 0, g: 0.76874566, b: 0.99215686, a: 0}
-    - _OuterColor: {r: 0, g: 0.20834994, b: 1, a: 0}
+    - _InnerColor: {r: 0.4245283, g: 0.4245283, b: 0.4245283, a: 0}
+    - _OuterColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 0}
   m_BuildTextureStacks: []
