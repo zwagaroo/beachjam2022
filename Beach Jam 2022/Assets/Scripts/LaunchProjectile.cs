@@ -86,7 +86,7 @@ public class LaunchProjectile : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.F))
         {
             var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * bulletSpeed;
