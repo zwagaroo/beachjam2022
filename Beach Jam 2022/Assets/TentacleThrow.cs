@@ -34,6 +34,12 @@ public class TentacleThrow : MonoBehaviour
            var newball = Instantiate(ballPrefab, player.position, player.rotation);
             //newball.GetComponent<InkProjectile>().target = new Vector3(heading.y*Mathf.Cos(30)*Mathf.Sin(45) - heading.x*Mathf.Sin(45), 2f, heading.y * Mathf.Cos(30) * Mathf.Sin(45) + heading.x * Mathf.Sin(45));
             newball.GetComponent<InkProjectile>().target = new Vector3(heading.y * Mathf.Sin(45) + heading.x * Mathf.Sin(45), 0, heading.y * Mathf.Sin(45) - heading.x * Mathf.Sin(45));
+            float angle = Mathf.Rad2Deg*(Mathf.Acos(heading.x / heading.magnitude));
+            if(heading.y < 0)
+            {
+                angle = -angle;
+            }
+            newball.transform.Rotate(0, 0, angle -73.158f);
         }
     }
 }

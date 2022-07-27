@@ -11,15 +11,17 @@ public class InkProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Vector3 direction = Vector3.RotateTowards(transform.up, target, 7f, -7f);
+        //target.y = 0;
+        //transform.rotation = Quaternion.LookRotation(direction);
+        //float angle = Mathf.Rad2Deg*(Mathf.Asin(target.z/target.magnitude));
+        //transform.Rotate(0, 0, angle - 90);
     }
 
     // Update is called once per frame
     void Update()
     {
         Vector3 heading = target;
-        //Vector3 direction = Vector3.RotateTowards(transform.up, target, 7f, -7f);
-       
         heading.y = 0;
         transform.position += heading * moveSpeed * Time.deltaTime;
     }
