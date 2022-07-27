@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MinionController : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    public Transform target;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private float _speed = 5;
     [SerializeField] private float minDist;
