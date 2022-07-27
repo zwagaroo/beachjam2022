@@ -1563,22 +1563,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1244614820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244614802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d12cc82a92c8a40ae68b416dc8f703, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 1737770031}
-  mCamera: {fileID: 963194227}
-  player: {fileID: 1681183250}
-  projectileCanvas: {fileID: 1497495523}
 --- !u!114 &1244614828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,11 +1631,6 @@ MonoBehaviour:
 --- !u!95 &1681183249 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5391054397365487792, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
-  m_PrefabInstance: {fileID: 5391054396809853189}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1681183250 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5391054397365487798, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
   m_PrefabInstance: {fileID: 5391054396809853189}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1737770031 stripped
@@ -2056,6 +2035,7 @@ GameObject:
   - component: {fileID: 1873986363}
   - component: {fileID: 1873986365}
   - component: {fileID: 1873986364}
+  - component: {fileID: 1873986366}
   m_Layer: 7
   m_Name: Tentacle
   m_TagString: Untagged
@@ -2150,6 +2130,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1873986366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873986362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81d12cc82a92c8a40ae68b416dc8f703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballPrefab: {fileID: 1737770031}
+  mCamera: {fileID: 963194227}
+  player: {fileID: 1873986363}
+  projectileCanvas: {fileID: 1497495523}
+  tentacleAnim: {fileID: 1873986365}
+  throwAnimation: {fileID: 7400000, guid: f860bf50b436a9049961e57ebb27d66e, type: 2}
 --- !u!1 &2077569009
 GameObject:
   m_ObjectHideFlags: 0
