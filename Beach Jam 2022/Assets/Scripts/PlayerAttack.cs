@@ -15,6 +15,8 @@ public class PlayerAttack : MonoBehaviour
     public bool canAttack = true;
     public float attackDamage;
     public float coolDownSeconds;
+
+    public LevelManager lManager;
     //coroutine to prevent attack spam
 
     private IEnumerator AttackBuffer()
@@ -48,7 +50,17 @@ public class PlayerAttack : MonoBehaviour
         foreach(Collider enemy in hitEnemies){
             if (enemy != null)
             {
-                enemy.gameObject.GetComponent<Health>().changeHealth(-attackDamage);
+                var enemyHealth = enemy.gameObject.GetComponent<Health>();
+                enemyHealth.changeHealth(-attackDamage);
+                if(enemyHealth.isDead())
+                {
+                    lManager.enemies.RemoveAt(0);
+                    Debug.Log("enemy removed");
+                    if(lManager.enemies.Count == 0)
+                    {
+                        lManager.NextLevel();
+                    }
+                }
                 Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
                 knockbackDir = knockbackDir.normalized;
                 knockbackDir.y = 0;

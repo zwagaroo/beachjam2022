@@ -152,7 +152,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 10, y: 10, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &224985353
 MonoBehaviour:
@@ -182,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224985351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.9299927, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 0, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1942,6 +1942,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 1681183249}
+    - target: {fileID: 6580564183772732916, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: lManager
+      value: 
+      objectReference: {fileID: 224985353}
     - target: {fileID: 6580564183772732916, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
       propertyPath: attackRange
       value: 4

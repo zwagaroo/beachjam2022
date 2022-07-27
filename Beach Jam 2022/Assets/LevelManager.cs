@@ -38,8 +38,9 @@ public class LevelManager : MonoBehaviour
         } 
     }
 
-    void NextLevel()
+    public void NextLevel()
     {
+        Debug.Log("Level complete!");
         exit.isTrigger = true;
     }
 
