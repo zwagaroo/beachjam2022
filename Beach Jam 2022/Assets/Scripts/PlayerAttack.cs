@@ -38,8 +38,8 @@ public class PlayerAttack : MonoBehaviour
     void Attack(){
         if(!canAttack){return;}
 
-        Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
-        //Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+        //Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
         //damage hit enemies
         foreach (Animator ani in tentacleAnims){
             ani.SetTrigger("isAttacking");
