@@ -17,6 +17,9 @@ public class PlayerAttack : MonoBehaviour
     public float coolDownSeconds;
 
     public LevelManager lManager;
+
+    public AudioSource aSource;
+    public AudioClip slap;
     //coroutine to prevent attack spam
 
     private IEnumerator AttackBuffer()
@@ -47,6 +50,7 @@ public class PlayerAttack : MonoBehaviour
             ani.SetTrigger("isAttacking");
         }
         anim.SetTrigger("isAttacking");
+        aSource.PlayOneShot(slap);
         foreach(Collider enemy in hitEnemies){
             if (enemy != null)
             {
