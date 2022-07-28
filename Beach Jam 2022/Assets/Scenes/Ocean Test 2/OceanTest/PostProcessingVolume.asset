@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8876715091749793526
+--- !u!114 &-3213142355920009612
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15,9 +15,9 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   xMultiplier:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 1
   yMultiplier:
     m_OverrideState: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
   scale:
     m_OverrideState: 0
     m_Value: 1
---- !u!114 &-7893295128165547882
+--- !u!114 &-396473193354346075
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,10 +43,10 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 2.5
+    m_Value: 0.57
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -54,8 +54,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 65472
   tint:
-    m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_OverrideState: 1
+    m_Value: {r: 0.9859762, g: 1, b: 0.78679246, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -68,35 +68,7 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &-7011558710299706105
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
-  m_Name: Vignette
-  m_EditorClassIdentifier: 
-  active: 1
-  color:
-    m_OverrideState: 1
-    m_Value: {r: 0.013220549, g: 1, b: 0, a: 1}
-  center:
-    m_OverrideState: 0
-    m_Value: {x: 0.5, y: 0.5}
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.474
-  smoothness:
-    m_OverrideState: 1
-    m_Value: 0.301
-  rounded:
-    m_OverrideState: 0
-    m_Value: 0
---- !u!114 &-6731807918789962074
+--- !u!114 &-357762415399623325
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,13 +98,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 3
   aperture:
     m_OverrideState: 1
-    m_Value: 2.7
+    m_Value: 3
   focalLength:
     m_OverrideState: 1
-    m_Value: 110
+    m_Value: 42
   bladeCount:
     m_OverrideState: 0
     m_Value: 5
@@ -152,27 +124,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: StylisedWaterProfile
+  m_Name: PostProcessingVolume
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 849379129802519247}
-  - {fileID: -7893295128165547882}
-  - {fileID: -7011558710299706105}
-  - {fileID: -6731807918789962074}
-  - {fileID: -8876715091749793526}
---- !u!114 &849379129802519247
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
-  m_Name: Tonemapping
-  m_EditorClassIdentifier: 
-  active: 1
-  mode:
-    m_OverrideState: 1
-    m_Value: 2
+  - {fileID: -3213142355920009612}
+  - {fileID: -396473193354346075}
+  - {fileID: -357762415399623325}
