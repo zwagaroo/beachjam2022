@@ -51,8 +51,12 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        //movement controls
+        //Follow();
+        //Look();
+        if (Vector3.Distance(this.transform.position, target.position) > minDist)
+        {
             Move();
+		}
     }
 
     //private void Follow()
@@ -68,24 +72,24 @@ public class EnemyController : MonoBehaviour
     //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
     //}
 
+    protected void Rotate()
+    {
+        Vector3 direction = Vector3.RotateTowards(transform.forward, new Vector3(heading.x, transform.position.y, heading.z), 4 * Mathf.PI, 0);
+        direction.y = 0;
+        _rb.transform.rotation = Quaternion.LookRotation(direction);
+    }
 
-    //can be overriden
     public virtual void Move()
     {
-        if (Vector3.Distance(this.transform.position, target.position) > minDist)
-        {
-            //if attacking do not move
-            if(attacking){return;}
-            //else go towards target position
-            heading = target.position - transform.position;
-            heading.Normalize();
-            heading.y = 0;
-            Vector3 moveVector = heading * _speed * Time.deltaTime;
-            /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
-            _rb.transform.position += moveVector;
-            //attack point will move
-            attackPoint.position = _rb.transform.position + heading * 1.0f;
-        }
+        if(attacking){return;}
+        heading = target.position - transform.position;
+        heading.Normalize();
+        heading.y = 0;
+        Vector3 moveVector = heading * _speed * Time.deltaTime;
+        Rotate();
+        /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
+        _rb.transform.position += moveVector;
+        attackPoint.position = _rb.transform.position + heading * 1.0f;
     }
 
     //player detection can be overriden

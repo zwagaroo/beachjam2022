@@ -13,6 +13,7 @@ public class SailboatController : EnemyController
 	private bool scared = false;
  
     public override void Move() {
+        Rotate();
 		if(!foundDirection)
 		{
 			heading.x = Random.Range(-10, 10);
