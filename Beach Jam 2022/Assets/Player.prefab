@@ -392,7 +392,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5391054397713672598}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!114 &354289035
 MonoBehaviour:
@@ -439,7 +439,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5391054397713672598}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1554229919
 MeshFilter:
@@ -578,7 +578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -270.2, y: -211.6}
+  m_AnchoredPosition: {x: -286.4, y: -211.6}
   m_SizeDelta: {x: 1.5, y: 0.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1578686379
@@ -644,8 +644,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e0664f33c6a2034592e8d65f4349134, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  height: 100
-  xalignment: -5
+  height: 367.9
+  xalignment: -100
   mCamera: {fileID: 0}
   target: {fileID: 5391054397713672598}
 --- !u!1 &1837385261
@@ -910,7 +910,7 @@ RectTransform:
   m_Children:
   - {fileID: 1578686378}
   m_Father: {fileID: 5391054397713672598}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1007,7 +1007,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5391054397713672598}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5391054397365487799
 GameObject:
@@ -1040,7 +1040,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5391054397713672598}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
 --- !u!212 &5391054397365487793
 SpriteRenderer:
@@ -1152,11 +1152,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1892390239}
   - {fileID: 5391054397365487798}
   - {fileID: 5391054396656867843}
   - {fileID: 1006495161}
   - {fileID: 1554229916}
-  - {fileID: 1892390239}
   - {fileID: 1873986363}
   - {fileID: 710258624}
   - {fileID: 1837385262}
