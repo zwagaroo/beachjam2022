@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
 
             int spIndex = Random.Range(0, spPoints.Count);
             Vector2 spawn = spPoints[spIndex];
-            Vector3 spPt = new Vector3(spawn.x, 1, spawn.y);
+            Vector3 spPt = new Vector3(spawn.x - ((spawnRangeMax.x-spawnRangeMin.x)/2), 1, spawn.y - ((spawnRangeMax.y - spawnRangeMin.y) / 2));
             EnemySpawn enemySp = new EnemySpawn(enemy, spPt);
             enemies.Add(enemySp);
         }
