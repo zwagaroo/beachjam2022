@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
         healthBar.value = (float)currentHealth;
 
         print(currentHealth);
+
         StartCoroutine(BecomeTemporarilyInvincible());
     }
 

@@ -58,9 +58,10 @@ public class PlayerAttack : MonoBehaviour
                 enemyHealth.changeHealth(-attackDamage);
                 if(enemyHealth.isDead())
                 {
+                    enemy.gameObject.GetComponent<ExplosionDeath>().Death();
                     lManager.enemies.RemoveAt(0);
                     Debug.Log("enemy removed");
-                    if(lManager.enemies.Count == 0)
+                    if (lManager.enemies.Count == 0)
                     {
                         lManager.NextLevel();
                     }

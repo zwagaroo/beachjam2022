@@ -101,7 +101,7 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0}
   moveSpeed: 15
-  dmg: 5
+  dmg: 1
 --- !u!136 &7402344796252237691
 CapsuleCollider:
   m_ObjectHideFlags: 0
