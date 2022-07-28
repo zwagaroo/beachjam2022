@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
+    [SerializeField] private Animator[] tentacleAnims;
     public float attackRange = .8f;
     public Transform attackPoint;
     public LayerMask enemyLayer;
@@ -13,6 +15,8 @@ public class PlayerAttack : MonoBehaviour
     public bool canAttack = true;
     public float attackDamage;
     public float coolDownSeconds;
+
+    public LevelManager lManager;
     //coroutine to prevent attack spam
 
     private IEnumerator AttackBuffer()
@@ -21,7 +25,6 @@ public class PlayerAttack : MonoBehaviour
         canAttack = false;
 
         yield return new WaitForSeconds(coolDownSeconds);
-
         canAttack = true;
         Debug.Log("Player can attack");
     
@@ -36,14 +39,33 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack(){
         if(!canAttack){return;}
+
+        //Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
         //damage hit enemies
+        foreach (Animator ani in tentacleAnims){
+            ani.SetTrigger("isAttacking");
+        }
+        anim.SetTrigger("isAttacking");
         foreach(Collider enemy in hitEnemies){
-            enemy.gameObject.GetComponent<Health>().changeHealth(-attackDamage);
-            Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
-            knockbackDir = knockbackDir.normalized;
-            knockbackDir.y = 0;
-            enemy.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir*knockbackForce;
+            if (enemy != null)
+            {
+                var enemyHealth = enemy.gameObject.GetComponent<Health>();
+                enemyHealth.changeHealth(-attackDamage);
+                if(enemyHealth.isDead())
+                {
+                    lManager.enemies.RemoveAt(0);
+                    Debug.Log("enemy removed");
+                    if(lManager.enemies.Count == 0)
+                    {
+                        lManager.NextLevel();
+                    }
+                }
+                Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
+                knockbackDir = knockbackDir.normalized;
+                knockbackDir.y = 0;
+                enemy.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir * knockbackForce;
+            }
         }
         StartCoroutine(AttackBuffer());
     }

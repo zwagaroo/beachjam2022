@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
-    {
+{
     //target    
     [SerializeField] public Transform target;
     [SerializeField] public Rigidbody _rb;
