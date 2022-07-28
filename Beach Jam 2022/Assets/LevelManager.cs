@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Bitgem.VFX.StylisedWater;
 
 public class LevelManager : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class LevelManager : MonoBehaviour
     public Vector2 spawnRangeMin;
     public List<Vector2> spPoints = new List<Vector2>();
     public GameObject endArrow;
+
+    //Implementation with ocean scene
+    public WaterVolumeHelper waterVolumeHelper;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +35,10 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void generateLevel(){
         
     }
 

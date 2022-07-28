@@ -11,12 +11,11 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask enemyLayer;
     public float knockbackForce;
 
+    public LevelManager lManager;
 
     public bool canAttack = true;
     public float attackDamage;
     public float coolDownSeconds;
-
-    public LevelManager lManager;
 
     public AudioSource aSource;
     public AudioClip slap;
