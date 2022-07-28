@@ -9,6 +9,7 @@ public class Turret : MonoBehaviour
     public GameObject ballPrefab;
     public float bulletSpeed;
     public bool canShoot = true;
+    public float shootDelay;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,7 @@ public class Turret : MonoBehaviour
         if(Vector3.Distance(target.position, transform.position) < minRange && canShoot)
         {
             canShoot = false;
-            Invoke("ShootCooldown", 2f);
+            Invoke("ShootCooldown", shootDelay);
             Shoot();
         }
     }
@@ -48,7 +49,8 @@ public class Turret : MonoBehaviour
         var newball = Instantiate(ballPrefab, transform.position, transform.rotation);
         Vector3 direction = Vector3.RotateTowards(newball.transform.forward, target.position, 2 * Mathf.PI, 0);
         newball.transform.rotation = Quaternion.LookRotation(direction);
-        newball.GetComponent<Rigidbody>().velocity = -newball.transform.forward * bulletSpeed;
+        newball.GetComponent<CannonBallProjectile>().target = heading;
+        //newball.GetComponent<Rigidbody>().velocity = -newball.transform.forward * bulletSpeed;
         //newball.GetComponent<InkProjectile>().target = new Vector3(heading.y*Mathf.Cos(30)*Mathf.Sin(45) - heading.x*Mathf.Sin(45), 2f, heading.y * Mathf.Cos(30) * Mathf.Sin(45) + heading.x * Mathf.Sin(45));
         //newball.GetComponent<InkProjectile>().target = new Vector3(heading.y * Mathf.Sin(45) + heading.x * Mathf.Sin(45), 0, heading.y * Mathf.Sin(45) - heading.x * Mathf.Sin(45));
         //float angle = Mathf.Rad2Deg * (Mathf.Acos(heading.x / heading.magnitude));

@@ -663,6 +663,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  minRange: 15
+  ballPrefab: {fileID: 6869914081372385233, guid: 3c4437aa6e8f25c418a94458f12bed4b, type: 3}
+  bulletSpeed: 30
+  canShoot: 1
 --- !u!1001 &4202832735893601148
 PrefabInstance:
   m_ObjectHideFlags: 0

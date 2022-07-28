@@ -52,6 +52,12 @@ public class MinionController : MonoBehaviour
     //}
 
 
+    private void Rotate()
+    {
+        Vector3 direction = Vector3.RotateTowards(transform.forward, new Vector3(heading.x, transform.position.y, heading.z), 4 * Mathf.PI, 0);
+        direction.y = 0;
+        _rb.transform.rotation = Quaternion.LookRotation(direction);
+    }
 
     private void Move()
     {
@@ -60,8 +66,7 @@ public class MinionController : MonoBehaviour
         heading.Normalize();
         heading.y = 0;
         Vector3 moveVector = heading * _speed * Time.deltaTime;
-        Vector3 direction = Vector3.RotateTowards(-_rb.transform.right, _rb.transform.position + moveVector, 2*Mathf.PI, 0);
-        transform.rotation = Quaternion.LookRotation(direction);
+        Rotate();
         /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
         _rb.transform.position += moveVector;
         attackPoint.position = _rb.transform.position + heading * 1.0f;
