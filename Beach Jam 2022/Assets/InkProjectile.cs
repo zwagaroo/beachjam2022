@@ -30,7 +30,19 @@ public class InkProjectile : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy")
         {
+            var enemyHealth = other.GetComponent<Health>();
             other.GetComponent<Health>().changeHealth(-dmg);
+            if (enemyHealth.isDead())
+            {
+                enemyHealth.gameObject.GetComponent<ExplosionDeath>().Death();
+                LevelManager.levelManager.enemies.RemoveAt(0);
+                Debug.Log("enemy removed");
+                if (LevelManager.levelManager.enemies.Count == 0)
+                {
+                    LevelManager.levelManager.NextLevel();
+                }
+            }
+            Destroy(gameObject);
         }
     }
 }

@@ -335,8 +335,9 @@ GameObject:
   - component: {fileID: 3764227537654450724}
   - component: {fileID: 3764227537654450725}
   - component: {fileID: 3764227537654450720}
+  - component: {fileID: 6077391573002273731}
   m_Layer: 3
-  m_Name: boat
+  m_Name: boat(gameObject)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -408,7 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   _rb: {fileID: 3764227537654450723}
-  _speed: 1
+  _speed: 2
   minDist: 3
   attackPoint: {fileID: 3764227537750041748}
   attackRange: 2
@@ -445,6 +446,19 @@ CapsuleCollider:
   m_Height: 8.1789875
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6077391573002273731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3764227537654450721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243713ef60e9c0e40b102332fb8bf79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 7635187030058423711, guid: 34c66b35a620ada4b8e3f8517498c6d6, type: 3}
 --- !u!1 &3764227537750041749
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +681,7 @@ MonoBehaviour:
   ballPrefab: {fileID: 6869914081372385233, guid: 3c4437aa6e8f25c418a94458f12bed4b, type: 3}
   bulletSpeed: 30
   canShoot: 1
+  shootDelay: 5
 --- !u!1001 &4202832735893601148
 PrefabInstance:
   m_ObjectHideFlags: 0
