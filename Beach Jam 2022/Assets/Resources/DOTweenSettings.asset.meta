@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 99b553d62be99554ba119481f0bbfa6d
+=======
 guid: 5a4d8e0264e1d5549aefef0200278446
+>>>>>>> origin/boatshooting
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

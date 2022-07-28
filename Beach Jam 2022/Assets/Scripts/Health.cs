@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         return (currentHealth <= 0);
     }
 
-        //Invincibility
+    //Invincibility
     public float invincibilityDurationSeconds;
     public bool isInvincible = false;
 

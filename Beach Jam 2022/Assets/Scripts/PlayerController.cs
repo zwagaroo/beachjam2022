@@ -89,6 +89,13 @@ public class PlayerController : MonoBehaviour {
         if(Input.GetButtonDown("Jump") && isGrounded){
             _rb.velocity += new Vector3(0f,jumpForce, 0f);     
         }
+
+        if(gameObject.GetComponent<Health>().isInvincible) {
+            canMove = false;
+        }
+        else {
+            canMove = true;
+        }
     }
 
     private void DetectGrounded(){
@@ -106,13 +113,19 @@ public class PlayerController : MonoBehaviour {
 
 
     private void Move() {
-        if(gameObject.GetComponent<Health>().isInvincible) {return;}
+        if(!canMove){ return;}
         var moveVector = _input.ToIso();
         moveVector.Normalize();
         moveVector *= _speed;
         moveVector.y = _rb.velocity.y*Time.deltaTime;
         _rb.transform.position += moveVector;
         
+    }
+
+    public virtual IEnumerator speedChange(float amount, float seconds){
+        _speed *= amount;
+        yield return new WaitForSeconds(seconds);
+        _speed /= amount;
 
     }
 }

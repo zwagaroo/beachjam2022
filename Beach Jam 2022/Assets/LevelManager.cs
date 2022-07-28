@@ -52,6 +52,7 @@ public class LevelManager : MonoBehaviour
         }
         foreach (EnemySpawn enemySp in enemies)
         {
+<<<<<<< HEAD
             GameObject temp = Instantiate(enemySp.enemy, enemySp.spawnPoint, Quaternion.Euler(0,0,0));
             if(temp.GetComponent<MinionController>() != null)
             {
@@ -68,6 +69,11 @@ public class LevelManager : MonoBehaviour
                 temp.GetComponentInChildren<HealthbarFollow>().mCamera = mCamera;
             }
 
+=======
+            GameObject temp = Instantiate(enemySp.enemy, enemySp.spawnPoint.position, enemySp.spawnPoint.rotation);
+            temp.GetComponent<EnemyController>().target = player.transform;
+            temp.GetComponentInChildren<HealthbarFollow>().mCamera = mCamera;
+>>>>>>> origin/finished_sailboat
         } 
     }
 

@@ -2,40 +2,61 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MinionController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
-    public Transform target;
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float _speed = 5;
-    [SerializeField] private float minDist;
-    private bool farAway;
+    //target    
+    [SerializeField] public Transform target;
+    [SerializeField] public Rigidbody _rb;
+    [SerializeField] public float _speed = 5;
+    //have to be this far away at least
+    [SerializeField] public float minDist;
+    public bool farAway;
+
+    //Point of attack
     public Transform attackPoint;
+    //Range of attack
     public float attackRange;
+
+    //Damage of attack
     public float attackDamage;
+
+    //Attacks players so it's attacks affect the player layer
     public LayerMask playerLayer;
+
+    //Speed of attack in seconds (pause motion on attacks)
     public float attackSpeedSeconds;
+    
+    //force of knockback of attacks
     public float knockbackForce;
     
     //[SerializeField] private float _turnSpeed = 360;
 
-    private Vector3 heading; 
-    private bool attacking;
+    //direction where enemy is heading
+    public Vector3 heading; 
 
+    //attacking or not
+    public bool attacking;
 
+    public bool canAttack = true;
+    
     void Update()
     {
-        //if(detectPlayer()){
-        //    StartCoroutine(AttackCoroutine());
-        //}
+        if(detectPlayer()){
+            //start attack routine
+            if(!attacking){
+                StartCoroutine(AttackCoroutine());
+            }
+        }
     }
-    private void FixedUpdate()
+
+    void FixedUpdate()
     {
         //Follow();
         //Look();
         if (Vector3.Distance(this.transform.position, target.position) > minDist)
-        {            
+        {
             Move();
-        }
+		}
     }
 
     //private void Follow()
@@ -51,15 +72,14 @@ public class MinionController : MonoBehaviour
     //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
     //}
 
-
-    private void Rotate()
+    protected void Rotate()
     {
         Vector3 direction = Vector3.RotateTowards(transform.forward, new Vector3(heading.x, transform.position.y, heading.z), 4 * Mathf.PI, 0);
         direction.y = 0;
         _rb.transform.rotation = Quaternion.LookRotation(direction);
     }
 
-    private void Move()
+    public virtual void Move()
     {
         if(attacking){return;}
         heading = target.position - transform.position;
@@ -72,7 +92,8 @@ public class MinionController : MonoBehaviour
         attackPoint.position = _rb.transform.position + heading * 1.0f;
     }
 
-    private bool detectPlayer(){
+    //player detection can be overriden
+    public virtual bool detectPlayer(){
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
         if(hitPlayer.Length != 0){
             return true;
@@ -80,14 +101,17 @@ public class MinionController : MonoBehaviour
         return false;
     }
 
-    private IEnumerator AttackCoroutine(){
+    //attack routine can be overriden
+    public virtual IEnumerator AttackCoroutine(){
+        if(!canAttack){ yield break; }
         attacking = true;
         yield return new WaitForSeconds(attackSpeedSeconds);
         Attack();
         attacking = false;
     }
 
-    private void Attack(){
+    //attacking can be overriden
+    public virtual void Attack(){
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
         if(hitPlayer.Length != 0){ 
             foreach(Collider player in hitPlayer){
