@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     private bool isBackwards = false;
     private bool isRight = false;
     private bool isLeft = false;
-    private bool isMoving = false;
+    public bool isMoving = false;
     private Vector3 _input;
     public bool canMove = true;
     public Transform attackPoint;
