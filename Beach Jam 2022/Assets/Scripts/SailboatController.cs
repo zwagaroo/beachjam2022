@@ -64,7 +64,7 @@ public class SailboatController : EnemyController
 		_rb.velocity += moveVector;
 		if(_rb.velocity.magnitude > maxSpeed*1.1f){
 			_rb.velocity.Normalize();
-			_rb.velocity = _rb.velocity * (maxSpeed*1forf);
+			_rb.velocity = _rb.velocity * (maxSpeed*1.1f);
 		}
 	}
 	

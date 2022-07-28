@@ -33,7 +33,7 @@ public class LevelManager : MonoBehaviour
         foreach (EnemySpawn enemySp in enemies)
         {
             GameObject temp = Instantiate(enemySp.enemy, enemySp.spawnPoint.position, enemySp.spawnPoint.rotation);
-            temp.GetComponent<MinionController>().target = player.transform;
+            temp.GetComponent<EnemyController>().target = player.transform;
             temp.GetComponentInChildren<HealthbarFollow>().mCamera = mCamera;
         } 
     }
