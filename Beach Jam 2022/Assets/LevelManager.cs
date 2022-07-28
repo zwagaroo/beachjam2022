@@ -35,6 +35,7 @@ public class LevelManager : MonoBehaviour
             GameObject temp = Instantiate(enemySp.enemy, enemySp.spawnPoint.position, enemySp.spawnPoint.rotation);
             temp.GetComponent<MinionController>().target = player.transform;
             temp.GetComponentInChildren<HealthbarFollow>().mCamera = mCamera;
+            temp.GetComponentInChildren<Turret>().target = player.transform;
         } 
     }
 
