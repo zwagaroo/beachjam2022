@@ -7,10 +7,15 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     
+    //Player Character
     public GameObject playerPrefab;
     private GameObject player;
     public Transform playerSpawn;
 
+    //UI
+    public GameObject healthBarPrefab;
+
+    //Ocean
     public GameObject ocean;
     public bool createOcean = true;
     public int oceanSize = 10;
