@@ -181,6 +181,45 @@ public class LevelManager : MonoBehaviour
             endArrow.SetActive(false);
             enemies.Clear(); //DO WE NEED THIS?
             GenerateLevel();
+
         }
     }
-}
+
+    /* Vector3 getSpawnPosOppositeWorldBoundary(float mapSize, WorldBoundary exitWorldBoundary){
+        float offsetFromWorldEdge = 2f;
+
+        switch(exitWorldBoundary){ //Based on the direction the player just exited the map
+            case WorldBoundary.UPPER_RIGHT: //Spawn player in lower left
+                break;
+            case WorldBoundary.UPPER_LEFT: //Spawn player in lower right
+            
+                break; 
+            case WorldBoundary.LOWER_RIGHT: //Spawn player in upper left
+            
+                break;
+            case WorldBoundary.LOWER_LEFT: //Spawn player in upper right
+            
+                break;
+            
+        } */
+ /*        //Lower Left
+        worldBoundaryColliders[0] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[0].center = new Vector3(0f,colliderY,oceanSize/2f);
+        worldBoundaryColliders[0].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
+
+        //Lower Right
+        worldBoundaryColliders[1] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[1].center = new Vector3(oceanSize/2f,colliderY,0f);
+        worldBoundaryColliders[1].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+
+        //Upper Left
+        worldBoundaryColliders[2] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[2].center = new Vector3(oceanSize/2f,colliderY,oceanSize);
+        worldBoundaryColliders[2].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+
+        //Upper Right
+        worldBoundaryColliders[3] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[3].center = new Vector3(oceanSize,colliderY,oceanSize/2f);
+        worldBoundaryColliders[3].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize); */
+    }
+
