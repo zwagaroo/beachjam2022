@@ -10,7 +10,9 @@ public class CameraFollow : MonoBehaviour
     void Update()
     {
         if(target){
-            transform.position = target.transform.position;
+            float height = transform.position.y;
+            Vector3 targetPos = target.transform.position;
+            transform.position = new Vector3(targetPos.x, height, targetPos.z);
         }
     }
 }
