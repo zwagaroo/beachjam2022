@@ -40,6 +40,7 @@ public class LevelManager : MonoBehaviour
 
     //Enemy Spawning
     public GameObject[] enemyTypePrefabs;
+    public GameObject navalMinePrefab;
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
     public Vector2 spawnRangeMax;
     public Vector2 spawnRangeMin;

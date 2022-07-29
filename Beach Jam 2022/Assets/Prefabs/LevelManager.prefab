@@ -76,20 +76,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51379a43709322c4eb410388f45cf355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followCamera: {fileID: 0}
   playerPrefab: {fileID: 5391054397713672599, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
   playerSpawn: {fileID: 70251302087635512}
   healthBarPrefab: {fileID: 1873019651792684841, guid: 9e4087705dcdb914cbefc04dfcdc7830, type: 3}
   ocean: {fileID: 0}
-  createOcean: 1
+  createNewOceanAtStart: 1
   oceanSize: 10
-  oceanHeight: 2
   oceanPrefab: {fileID: 3269382406253757877, guid: 2a476f774d9d70d4fa296322955f7d6e, type: 3}
   worldBoundaryColliders:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  islandPrefabs: []
+  rockPrefabs: []
+  treePrefabs: []
+  daytimeSkybox: {fileID: 2100000, guid: 1265032bf77bd224489d8eff96a41392, type: 2}
+  spookySkybox: {fileID: 2100000, guid: fdeaf622ccc40b64aa54caea48619ecb, type: 2}
   enemyTypePrefabs: []
+  navalMinePrefab: {fileID: 0}
   enemies: []
   spawnRangeMax: {x: 0, y: 0}
   spawnRangeMin: {x: 0, y: 0}
