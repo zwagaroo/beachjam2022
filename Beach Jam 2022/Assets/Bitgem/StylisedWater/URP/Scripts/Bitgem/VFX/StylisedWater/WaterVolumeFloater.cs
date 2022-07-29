@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Bitgem.VFX.StylisedWater
 {
-    public class WateverVolumeFloater : MonoBehaviour
+    public class WaterVolumeFloater : MonoBehaviour
     {
         #region Public fields
 
