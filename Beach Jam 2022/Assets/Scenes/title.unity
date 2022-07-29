@@ -939,6 +939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Start
       objectReference: {fileID: 0}
+    - target: {fileID: 8553817928822781566, guid: fbbd22434716bb94ca569df26ade7349, type: 3}
+      propertyPath: sceneToLoad
+      value: OceanScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbbd22434716bb94ca569df26ade7349, type: 3}
 --- !u!1001 &9050971925526088722
