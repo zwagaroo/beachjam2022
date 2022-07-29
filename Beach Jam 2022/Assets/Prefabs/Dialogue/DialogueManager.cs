@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     //Holds the lines currently used
-    public Line[] lines;
+    private Line[] lines;
     
     public GameObject dialogueBox;
     public Text dialogueText;
@@ -21,11 +21,10 @@ public class DialogueManager : MonoBehaviour
     public Sprite takoyakiPortrait;
     public Sprite surferPortrait;
 
+    public enum DialogueType {INTRO, ENDING};
 
-    //Holds lines for intro
+    //Holds lines for intro and ending
     public Line[] intro;
-
-    //Holds lines for ending
     public Line[] ending;
 
     //Check if the dialogue manager is active
@@ -40,11 +39,8 @@ public class DialogueManager : MonoBehaviour
     //force player to wait until the character is finished talking
     public bool canContinue = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        lines = intro;
-        canContinue = true;
+    void Start(){
+        //StartDialogue(DialogueType.INTRO); //DEBUG only
     }
 
     // Update is called once per frame
@@ -52,12 +48,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && canContinue)
         {
-            if (!dialogueActive)
-            {
-                StartDialogue();
-                Debug.Log("Start Dialogue");
-            }
-            else if (lastLine)
+            if (lastLine)
             {
                 EndDialogue();
             }
@@ -69,8 +60,15 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void StartDialogue()
+    public void StartDialogue(DialogueType dialogueType)
     {
+        if(dialogueType == DialogueType.INTRO){
+            lines = intro;
+        }else if(dialogueType == DialogueType.ENDING){
+            lines = ending;
+        }
+        canContinue = true;
+
         dialogueActive = true;
         dialogueBox.SetActive(true);
         nameBox.SetActive(true);
