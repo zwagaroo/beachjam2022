@@ -28,7 +28,8 @@ public class LevelManager : MonoBehaviour
     public GameObject oceanPrefab;
 
     public enum WorldBoundary {UPPER_RIGHT, UPPER_LEFT, LOWER_RIGHT, LOWER_LEFT};
-    public BoxCollider[] worldBoundaryColliders = new BoxCollider[4]; //If createOcean = true, will generate these automatically
+    Dictionary<WorldBoundary, BoxCollider> worldBoundaryColliders = new Dictionary<WorldBoundary, BoxCollider>();
+    //public BoxCollider[] worldBoundaryColliders = new BoxCollider[4]; //If createOcean = true, will generate these automatically
     private float worldBoundaryColliderWidth = 1f;
     private float worldBoundaryColliderOffset = 0f;
 
@@ -91,27 +92,32 @@ public class LevelManager : MonoBehaviour
         Debug.Log("OCEAN GENERATED");
 
         float colliderY = 2f;
-        worldBoundaryColliders = new BoxCollider[4];
-
-        //Lower Left
-        worldBoundaryColliders[0] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[0].center = new Vector3(0f,colliderY,oceanSize/2f);
-        worldBoundaryColliders[0].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
-
-        //Lower Right
-        worldBoundaryColliders[1] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[1].center = new Vector3(oceanSize/2f,colliderY,0f);
-        worldBoundaryColliders[1].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
-
-        //Upper Left
-        worldBoundaryColliders[2] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[2].center = new Vector3(oceanSize/2f,colliderY,oceanSize);
-        worldBoundaryColliders[2].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
 
         //Upper Right
-        worldBoundaryColliders[3] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[3].center = new Vector3(oceanSize,colliderY,oceanSize/2f);
-        worldBoundaryColliders[3].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
+        BoxCollider upper_right = gameObject.AddComponent<BoxCollider>();
+        upper_right.center = new Vector3(oceanSize,colliderY,oceanSize/2f);
+        upper_right.size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
+        worldBoundaryColliders.Add(WorldBoundary.UPPER_RIGHT, upper_right);
+
+        //Upper Left
+        BoxCollider upper_left = gameObject.AddComponent<BoxCollider>();
+        upper_left.center = new Vector3(oceanSize/2f,colliderY,oceanSize);
+        upper_left.size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+        worldBoundaryColliders.Add(WorldBoundary.UPPER_LEFT, upper_left);
+
+        //Lower Right
+        BoxCollider lower_right = gameObject.AddComponent<BoxCollider>();
+        lower_right.center = new Vector3(oceanSize/2f,colliderY,0f);
+        lower_right.size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+        worldBoundaryColliders.Add(WorldBoundary.LOWER_RIGHT, lower_right);
+
+        //Lower Left
+        BoxCollider lower_left = gameObject.AddComponent<BoxCollider>();
+        lower_left.center = new Vector3(0f,colliderY,oceanSize/2f);
+        lower_left.size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
+        worldBoundaryColliders.Add(WorldBoundary.LOWER_LEFT, lower_left);
+
+
 
 
     }
@@ -165,7 +171,7 @@ public class LevelManager : MonoBehaviour
     }
 
     public void SetWorldBoundariesActive(bool isActive){
-        foreach(Collider collider in worldBoundaryColliders){
+        foreach(Collider collider in worldBoundaryColliders.Values){
             collider.isTrigger = !isActive;
         }
     }
