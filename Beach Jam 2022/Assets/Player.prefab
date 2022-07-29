@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6ef1fab92f5e147b6c4d9ca51110ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputDisabled: 0
   _rb: {fileID: 5391054397713672595}
   _speed: 0.1
   groundPoint: {fileID: 5391054396656867843}
@@ -753,7 +754,7 @@ MonoBehaviour:
   canAttack: 1
   attackDamage: 2
   coolDownSeconds: 1
-  slap: {fileID: 8300000, guid: cfa53081c5d137d40a768775c146c37f, type: 3}
+  slap: {fileID: 8300000, guid: abfc6bbe8c8b9c849bb345eb5a87e0a0, type: 3}
 --- !u!114 &3534269753029274516
 MonoBehaviour:
   m_ObjectHideFlags: 0
