@@ -21,11 +21,14 @@ public class LevelManager : MonoBehaviour
     //Ocean
     public GameObject ocean;
     public bool createOcean = true;
-    public int oceanSize = 10;
-    public int oceanHeight = 2;
+    public float oceanSize = 10f;
+    private float oceanHeight = 2f;
     public GameObject oceanPrefab;
 
-    public Collider[] worldBoundaryColliders = new Collider[4];
+    public BoxCollider[] worldBoundaryColliders = new BoxCollider[4]; //If createOcean = true, will generate these automatically
+    private float worldBoundaryColliderWidth = 1f;
+    private float worldBoundaryColliderOffset = 0f;
+
     public GameObject[] enemyTypePrefabs;
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
     public Vector2 spawnRangeMax;
@@ -59,9 +62,34 @@ public class LevelManager : MonoBehaviour
     }
 
     void SetupOcean(){
-        ocean = Instantiate(oceanPrefab, Vector3.zero, Quaternion.identity);
+        ocean = Instantiate(oceanPrefab, new Vector3(0.5f, 0, 0.5f), Quaternion.identity);
         ocean.transform.GetChild(0).localScale = new Vector3(oceanSize, oceanHeight, oceanSize);
         Debug.Log("OCEAN GENERATED");
+
+        float colliderY = 2f;
+        worldBoundaryColliders = new BoxCollider[4];
+
+        //Lower Left
+        worldBoundaryColliders[0] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[0].center = new Vector3(0f,colliderY,oceanSize/2f);
+        worldBoundaryColliders[0].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
+
+        //Lower Right
+        worldBoundaryColliders[1] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[1].center = new Vector3(oceanSize/2f,colliderY,0f);
+        worldBoundaryColliders[1].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+
+        //Upper Left
+        worldBoundaryColliders[2] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[2].center = new Vector3(oceanSize/2f,colliderY,oceanSize);
+        worldBoundaryColliders[2].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+
+        //Upper Right
+        worldBoundaryColliders[3] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[3].center = new Vector3(oceanSize,colliderY,oceanSize/2f);
+        worldBoundaryColliders[3].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
+
+
     }
 
     void GenerateLevel(){
