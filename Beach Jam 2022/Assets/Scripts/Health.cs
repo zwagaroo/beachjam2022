@@ -10,6 +10,11 @@ public class Health : MonoBehaviour
     private double currentHealth;
     [SerializeField]
     private Animator anim;
+
+    public Sprite heartfull;
+    public Sprite halfaheart;
+    public Sprite heartempty; 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +30,19 @@ public class Health : MonoBehaviour
 
         currentHealth += change;
         healthBar.value = (float)currentHealth;
+
+        if (currentHealth == initialHealth/2) 
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = halfaheart;
+        } 
+        else if (currentHealth < initialHealth/2)  
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = heartempty;
+        }
+        else 
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().sprite = heartfull;    
+        }
 
         print(currentHealth);
 
