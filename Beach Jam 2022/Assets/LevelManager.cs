@@ -70,7 +70,7 @@ public class LevelManager : MonoBehaviour
 
     void SetupPlayer(){
         player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
-        //followCamera.target = player; //TODO: FIX LATER
+        followCamera.target = player; 
     }
 
     void SetupOcean(){
