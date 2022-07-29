@@ -8,6 +8,7 @@ public class PauseGame : MonoBehaviour
     public static PauseGame Instance;
     public bool pauseActive;
     public GameObject pauseScreen;
+    public PlayerController pController;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +23,13 @@ public class PauseGame : MonoBehaviour
             if (!pauseActive)
             {
                 pauseActive = true;
+                pController.inputDisabled = true;
                 StartPausing();
             }
             else
             {
                 pauseActive = false;
+                pController.inputDisabled = false;
                 StopPausing();
             }
 

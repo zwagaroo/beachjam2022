@@ -420,6 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseActive: 0
   pauseScreen: {fileID: 471427887276380001}
+  pController: {fileID: 0}
 --- !u!1 &7511679416743605617
 GameObject:
   m_ObjectHideFlags: 0
