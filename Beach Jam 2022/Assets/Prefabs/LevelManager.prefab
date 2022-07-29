@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150546395315197037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 4, y: 2, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,6 +61,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 70251302087635512}
+  - {fileID: 3363411522691664328}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,7 +83,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 1873019651792684841, guid: 9e4087705dcdb914cbefc04dfcdc7830, type: 3}
   ocean: {fileID: 0}
   createNewOceanAtStart: 1
-  oceanSize: 10
+  oceanSize: 20
   oceanPrefab: {fileID: 3269382406253757877, guid: 2a476f774d9d70d4fa296322955f7d6e, type: 3}
   worldBoundaryColliders:
   - {fileID: 0}
@@ -94,7 +95,8 @@ MonoBehaviour:
   treePrefabs: []
   daytimeSkybox: {fileID: 2100000, guid: 1265032bf77bd224489d8eff96a41392, type: 2}
   spookySkybox: {fileID: 2100000, guid: fdeaf622ccc40b64aa54caea48619ecb, type: 2}
-  enemyTypePrefabs: []
+  enemyTypePrefabs:
+  - {fileID: 3764227537654450721, guid: 04dd4e840e81c6d4a9e01514257a19c3, type: 3}
   navalMinePrefab: {fileID: 0}
   enemies: []
   spawnRangeMax: {x: 0, y: 0}
@@ -102,3 +104,52 @@ MonoBehaviour:
   spPoints: []
   endArrow: {fileID: 0}
   waterVolumeHelper: {fileID: 0}
+--- !u!1 &3363411522691664374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3363411522691664328}
+  - component: {fileID: 3363411522691664329}
+  m_Layer: 0
+  m_Name: Post Processing Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3363411522691664328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363411522691664374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3182655647290479010}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3363411522691664329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3363411522691664374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: b9e88800067e9204382fd9af516ac596, type: 2}
