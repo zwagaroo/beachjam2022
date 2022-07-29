@@ -1798,6 +1798,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 3116207430094053665, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60.4422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116207430094053665, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 136.3538
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116207430094053665, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116207430094053665, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3116207430094053665, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3645545334106746087, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
       propertyPath: anim
       value: 
