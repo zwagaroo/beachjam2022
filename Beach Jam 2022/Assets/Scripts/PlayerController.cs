@@ -20,6 +20,13 @@ public class PlayerController : MonoBehaviour {
     public bool canMove = true;
     public Transform attackPoint;
 
+    private AudioSource audioSource;
+    public AudioClip[] swimSounds;
+
+    void Start(){
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void Update() {
         //dectect if on the ground
         DetectGrounded();
@@ -95,6 +102,13 @@ public class PlayerController : MonoBehaviour {
         }
         else {
             canMove = true;
+        }
+
+        //SOUNDS
+        if (!audioSource.isPlaying && isMoving)
+        {
+            int rand = Random.Range(0, swimSounds.Length);
+            audioSource.PlayOneShot(swimSounds[rand]);
         }
     }
 
