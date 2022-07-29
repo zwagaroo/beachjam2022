@@ -7,6 +7,9 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     
+    //Required setup
+    public CameraFollow followCamera;
+
     //Player Character
     public GameObject playerPrefab;
     private GameObject player;
@@ -41,17 +44,21 @@ public class LevelManager : MonoBehaviour
 
         //Create ocean and world colliders
         if(createOcean){
-            GenerateOcean();
+            SetupOcean();
         }
         waterVolumeHelper = ocean.GetComponent<WaterVolumeHelper>();
 
         //Setup player
-        player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
-        
+        SetupPlayer();
         GenerateLevel();
     }
 
-    void GenerateOcean(){
+    void SetupPlayer(){
+        player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
+        //followCamera.target = player; //TODO: FIX LATER
+    }
+
+    void SetupOcean(){
         ocean = Instantiate(oceanPrefab, Vector3.zero, Quaternion.identity);
         ocean.transform.GetChild(0).localScale = new Vector3(oceanSize, oceanHeight, oceanSize);
         Debug.Log("OCEAN GENERATED");
