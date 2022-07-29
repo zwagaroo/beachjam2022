@@ -9,7 +9,13 @@ public class AudioTest : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.GetComponent<AudioManager>().Play("Theme");
+        //AudioManager.GetComponent<AudioManager>().Play("Onwards");
+    }
+
+    void Update(){
+        if(Input.GetKeyDown("space")){
+            AudioManager.GetComponent<AudioManager>().Play("CannonShot");
+        }
     }
 
 }
