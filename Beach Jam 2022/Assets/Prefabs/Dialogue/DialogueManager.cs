@@ -39,6 +39,8 @@ public class DialogueManager : MonoBehaviour
     //force player to wait until the character is finished talking
     public bool canContinue = true;
 
+    private GameObject callbackObject; //Object for DialogueManager to notify via BroadcastMessage that dialogue is over
+
     void Start(){
         //StartDialogue(DialogueType.INTRO); //DEBUG only
     }
@@ -60,7 +62,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueType dialogueType)
+    public void StartDialogue(DialogueType dialogueType, GameObject myCallbackObject=null)
     {
         if(dialogueType == DialogueType.INTRO){
             lines = intro;
@@ -68,6 +70,8 @@ public class DialogueManager : MonoBehaviour
             lines = ending;
         }
         canContinue = true;
+
+        callbackObject = myCallbackObject;
 
         dialogueActive = true;
         dialogueBox.SetActive(true);
@@ -84,6 +88,9 @@ public class DialogueManager : MonoBehaviour
         dialogueActive = false;
         lineCounter = 0;
         lastLine = false;
+        if(callbackObject){
+            callbackObject.BroadcastMessage("HandleEndDialogue");
+        }
     }
 
     IEnumerator NextSentence()
