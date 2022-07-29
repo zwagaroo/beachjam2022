@@ -16,7 +16,9 @@ public class LevelManager : MonoBehaviour
     public Transform playerSpawn;
 
     //UI
-    public GameObject healthBarPrefab;
+    public GameObject healthBarPrefab; //replace this later with HUD
+    public GameObject nextLevelArrowPrefab;
+    private GameObject[] nextLevelArrows;
 
     //Ocean
     public GameObject ocean;
@@ -25,9 +27,11 @@ public class LevelManager : MonoBehaviour
     private float oceanHeight = 2f;
     public GameObject oceanPrefab;
 
+    public enum WorldBoundary {UPPER_RIGHT, UPPER_LEFT, LOWER_RIGHT, LOWER_LEFT};
     public BoxCollider[] worldBoundaryColliders = new BoxCollider[4]; //If createOcean = true, will generate these automatically
     private float worldBoundaryColliderWidth = 1f;
     private float worldBoundaryColliderOffset = 0f;
+
 
     //Environmental Prefabs
     public GameObject[] islandPrefabs;
@@ -49,7 +53,6 @@ public class LevelManager : MonoBehaviour
     public Vector2 spawnRangeMax;
     public Vector2 spawnRangeMin;
     public List<Vector2> spPoints = new List<Vector2>();
-    public GameObject endArrow;
 
     //Implementation with ocean scene
     public WaterVolumeHelper waterVolumeHelper;
@@ -74,6 +77,7 @@ public class LevelManager : MonoBehaviour
         //Setup player
         SetupPlayer();
         GenerateLevel();
+        FinishLevel();
 
     }
 
@@ -124,8 +128,7 @@ public class LevelManager : MonoBehaviour
     void GenerateLevel(){
         Debug.Log("GENERATING LEVEL");
         SetWorldBoundariesActive(true);
-        SpawnEnemies();
-        endArrow.SetActive(false); //TODO: turn this into multiple end arrows
+        //SpawnEnemies();
     }
 
     void SpawnEnemies()
@@ -171,16 +174,55 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Level complete!");
         SetWorldBoundariesActive(false);
-        endArrow.SetActive(true);
+        //TODO: Instantiate and populate nextLevelArrows here
     }
 
     void OnTriggerEnter(Collider other){ //When player leaves map, create new level
         if(other.gameObject.tag == "Player")
         {
+            Debug.Log("PLAYER MOVED TO NEW LEVEL");
             player.transform.position = playerSpawn.position;
-            endArrow.SetActive(false);
+            //endArrow.SetActive(false);
             enemies.Clear(); //DO WE NEED THIS?
             GenerateLevel();
+
         }
+    }
+
+    Vector3 getSpawnPosOppositeWorldBoundary(float mapSize, WorldBoundary exitWorldBoundary){
+        float offsetFromWorldEdge = 2f;
+
+        switch(exitWorldBoundary){ //Based on the direction the player just exited the map
+            case WorldBoundary.UPPER_RIGHT: //Spawn player in lower left
+                return Vector3()
+            case WorldBoundary.UPPER_LEFT: //Spawn player in lower right
+            
+                break; 
+            case WorldBoundary.LOWER_RIGHT: //Spawn player in upper left
+            
+                break;
+            case WorldBoundary.LOWER_LEFT: //Spawn player in upper right
+            
+                break;
+        }
+ /*        //Lower Left
+        worldBoundaryColliders[0] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[0].center = new Vector3(0f,colliderY,oceanSize/2f);
+        worldBoundaryColliders[0].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
+
+        //Lower Right
+        worldBoundaryColliders[1] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[1].center = new Vector3(oceanSize/2f,colliderY,0f);
+        worldBoundaryColliders[1].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+
+        //Upper Left
+        worldBoundaryColliders[2] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[2].center = new Vector3(oceanSize/2f,colliderY,oceanSize);
+        worldBoundaryColliders[2].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
+
+        //Upper Right
+        worldBoundaryColliders[3] = gameObject.AddComponent<BoxCollider>();
+        worldBoundaryColliders[3].center = new Vector3(oceanSize,colliderY,oceanSize/2f);
+        worldBoundaryColliders[3].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize); */
     }
 }
