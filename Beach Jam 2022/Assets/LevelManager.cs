@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
 
     //Ocean
     public GameObject ocean;
-    public bool createOcean = true;
+    public bool createNewOceanAtStart = true;
     public float oceanSize = 10f;
     private float oceanHeight = 2f;
     public GameObject oceanPrefab;
@@ -29,6 +29,16 @@ public class LevelManager : MonoBehaviour
     private float worldBoundaryColliderWidth = 1f;
     private float worldBoundaryColliderOffset = 0f;
 
+    //Environmental Prefabs
+    public GameObject[] islandPrefabs;
+    public GameObject[] rockPrefabs;
+    public GameObject[] treePrefabs;
+
+    //Environmental Lighting Assets
+    public Material daytimeSkybox;
+    public Material spookySkybox;
+
+    //Enemy Spawning
     public GameObject[] enemyTypePrefabs;
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
     public Vector2 spawnRangeMax;
@@ -46,9 +56,10 @@ public class LevelManager : MonoBehaviour
         Instance = this;
 
         //Create ocean and world colliders
-        if(createOcean){
-            SetupOcean();
+        if(createNewOceanAtStart){
+            ocean = Instantiate(oceanPrefab, new Vector3(0.5f, 0, 0.5f), Quaternion.identity);
         }
+        SetupOcean();
         waterVolumeHelper = ocean.GetComponent<WaterVolumeHelper>();
 
         //Setup player
@@ -62,7 +73,6 @@ public class LevelManager : MonoBehaviour
     }
 
     void SetupOcean(){
-        ocean = Instantiate(oceanPrefab, new Vector3(0.5f, 0, 0.5f), Quaternion.identity);
         ocean.transform.GetChild(0).localScale = new Vector3(oceanSize, oceanHeight, oceanSize);
         Debug.Log("OCEAN GENERATED");
 
