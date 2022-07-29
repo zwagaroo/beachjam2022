@@ -35,6 +35,10 @@ public class LevelManager : MonoBehaviour
     public GameObject[] treePrefabs;
 
     //Environmental Lighting Assets
+    private enum WeatherState{
+        CLEAR,
+        STORM
+    }
     public Material daytimeSkybox;
     public Material spookySkybox;
 
@@ -56,6 +60,10 @@ public class LevelManager : MonoBehaviour
         //Set the LevelManager Singleton Instance
         Instance = this;
 
+        
+        //Setup weather
+        SetWeather(WeatherState.CLEAR);
+
         //Create ocean and world colliders
         if(createNewOceanAtStart){
             ocean = Instantiate(oceanPrefab, new Vector3(0.5f, 0, 0.5f), Quaternion.identity);
@@ -66,6 +74,7 @@ public class LevelManager : MonoBehaviour
         //Setup player
         SetupPlayer();
         GenerateLevel();
+
     }
 
     void SetupPlayer(){
@@ -101,6 +110,15 @@ public class LevelManager : MonoBehaviour
         worldBoundaryColliders[3].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
 
 
+    }
+
+    void SetWeather(WeatherState state){
+        if(state == WeatherState.CLEAR){
+            RenderSettings.skybox = daytimeSkybox;
+        }else if (state == WeatherState.STORM){
+            RenderSettings.skybox = spookySkybox;
+        }
+        DynamicGI.UpdateEnvironment();
     }
 
     void GenerateLevel(){
