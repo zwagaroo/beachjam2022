@@ -47,7 +47,57 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 7102a71bbdf6afb47adfa3522bd00e04, type: 3}
-    volume: 0.3
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Onwards
+    clip: {fileID: 8300000, guid: 73332da5b4d2afa4fbd9b9cbec70f95d, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: CannonShot
+    clip: {fileID: 8300000, guid: 52279964bdc37234d98e6ecd9e879941, type: 3}
+    volume: 0.328
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Swim1
+    clip: {fileID: 8300000, guid: d6f78789efa31af4f89efa67b282d8b7, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swim2
+    clip: {fileID: 8300000, guid: 518ead6edeecfd64ebc70f45a2185593, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swim3
+    clip: {fileID: 8300000, guid: 4112c716a2822c943bbd964eb36dccd8, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swim4
+    clip: {fileID: 8300000, guid: fba85a0368481d8429e685181dd72646, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swim5
+    clip: {fileID: 8300000, guid: ca47b7f4fe828f449b72bbc7c8fab875, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swim6
+    clip: {fileID: 8300000, guid: 1c7faf1d537aefa45b4d89a07978e94a, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  currentlyPlaying: []
+  currentlyPaused: []
