@@ -194,7 +194,7 @@ public class LevelManager : MonoBehaviour
 
         switch(exitWorldBoundary){ //Based on the direction the player just exited the map
             case WorldBoundary.UPPER_RIGHT: //Spawn player in lower left
-                return Vector3()
+                break;
             case WorldBoundary.UPPER_LEFT: //Spawn player in lower right
             
                 break; 
@@ -205,6 +205,7 @@ public class LevelManager : MonoBehaviour
             
                 break;
         }
+        return Vector3.zero;
  /*        //Lower Left
         worldBoundaryColliders[0] = gameObject.AddComponent<BoxCollider>();
         worldBoundaryColliders[0].center = new Vector3(0f,colliderY,oceanSize/2f);
