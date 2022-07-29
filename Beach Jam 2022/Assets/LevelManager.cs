@@ -183,10 +183,19 @@ public class LevelManager : MonoBehaviour
         //TODO: Instantiate and populate nextLevelArrows here
     }
 
-    void OnTriggerEnter(Collider other){ //When player leaves map, create new level
+ /*    void OnTriggerEnter(Collider other){ //When player leaves map, create new level
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("PLAYER MOVED TO NEW LEVEL");
+
+            foreach(KeyValuePair<WorldBoundary,BoxCollider> pair in worldBoundaryColliders){
+                Debug.Log(pair.Key);
+                if((Collider)pair.Value == other){
+                    Debug.Log("PLAYER MOVED TO NEW LEVEL ");
+                    Debug.Log(pair.Key);
+                }
+            }
+
             player.transform.position = playerSpawn.position;
             //endArrow.SetActive(false);
             enemies.Clear(); //DO WE NEED THIS?
@@ -194,9 +203,18 @@ public class LevelManager : MonoBehaviour
 
         }
     }
+ */
 
-    Vector3 getSpawnPosOppositeWorldBoundary(float mapSize, WorldBoundary exitWorldBoundary){
+    public Vector3 getSpawnPosOppositeWorldCollider(float mapSize, Collider exitCollider){
         float offsetFromWorldEdge = 2f;
+
+        WorldBoundary exitWorldBoundary = WorldBoundary.UPPER_LEFT;
+
+        foreach(KeyValuePair<WorldBoundary,BoxCollider> pair in worldBoundaryColliders){
+            if((Collider)pair.Value == exitCollider){
+                exitWorldBoundary = pair.Key;
+            }
+        }
 
         switch(exitWorldBoundary){ //Based on the direction the player just exited the map
             case WorldBoundary.UPPER_RIGHT: //Spawn player in lower left

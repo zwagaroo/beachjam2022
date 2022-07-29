@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3182655647290479012, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
+      propertyPath: m_TagString
+      value: LevelManager
+      objectReference: {fileID: 0}
     - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
       propertyPath: ocean
       value: 
