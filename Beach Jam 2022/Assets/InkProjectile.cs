@@ -35,11 +35,11 @@ public class InkProjectile : MonoBehaviour
             if (enemyHealth.isDead())
             {
                 enemyHealth.gameObject.GetComponent<ExplosionDeath>().Death();
-                LevelManager.levelManager.enemies.RemoveAt(0);
+                LevelManager.Instance.enemies.RemoveAt(0);
                 Debug.Log("enemy removed");
-                if (LevelManager.levelManager.enemies.Count == 0)
+                if (LevelManager.Instance.enemies.Count == 0)
                 {
-                    LevelManager.levelManager.NextLevel();
+                    LevelManager.Instance.FinishLevel();
                 }
             }
             Destroy(gameObject);

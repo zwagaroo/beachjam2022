@@ -5,7 +5,7 @@ using Bitgem.VFX.StylisedWater;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager levelManager;
+    public static LevelManager Instance;
     
     public GameObject playerPrefab;
     private GameObject player;
@@ -13,9 +13,11 @@ public class LevelManager : MonoBehaviour
 
     public GameObject ocean;
     public bool createOcean = true;
+    public int oceanSize = 10;
+    public int oceanHeight = 2;
     public GameObject oceanPrefab;
 
-    public Collider[] worldBoundaryColliders = Collider[4];
+    public Collider[] worldBoundaryColliders = new Collider[4];
     public GameObject[] enemyTypePrefabs;
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
     public Vector2 spawnRangeMax;
@@ -29,24 +31,25 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelManager = this;
+        //Set the LevelManager Singleton Instance
+        Instance = this;
 
         //Create ocean and world colliders
         if(createOcean){
-            ocean = Instantiate(oceanPrefab, Vector3.zero, Quaternion.zero);
+            GenerateOcean();
         }
         waterVolumeHelper = ocean.GetComponent<WaterVolumeHelper>();
 
         //Setup player
-        player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.zero);
+        player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
         
         GenerateLevel();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void GenerateOcean(){
+        ocean = Instantiate(oceanPrefab, Vector3.zero, Quaternion.identity);
+        ocean.transform.GetChild(0).localScale = new Vector3(oceanSize, oceanHeight, oceanSize);
+        Debug.Log("OCEAN GENERATED");
     }
 
     void GenerateLevel(){
@@ -86,8 +89,6 @@ public class LevelManager : MonoBehaviour
             {
                 temp.GetComponentInChildren<Turret>().target = player.transform;
             }
-
-
         } 
     }
 
@@ -100,11 +101,11 @@ public class LevelManager : MonoBehaviour
     public void FinishLevel()
     {
         Debug.Log("Level complete!");
-        exit.isTrigger = true;
+        SetWorldBoundariesActive(false);
         endArrow.SetActive(true);
     }
 
-    void OnTriggerEnter(Collider other) //When player leaves map, create new level
+    void OnTriggerEnter(Collider other){ //When player leaves map, create new level
         if(other.gameObject.tag == "Player")
         {
             player.transform.position = playerSpawn.position;

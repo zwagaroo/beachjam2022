@@ -11,8 +11,6 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask enemyLayer;
     public float knockbackForce;
 
-    public LevelManager lManager;
-
     public bool canAttack = true;
     public float attackDamage;
     public float coolDownSeconds;
@@ -58,11 +56,11 @@ public class PlayerAttack : MonoBehaviour
                 if(enemyHealth.isDead())
                 {
                     enemy.gameObject.GetComponent<ExplosionDeath>().Death();
-                    lManager.enemies.RemoveAt(0);
+                    LevelManager.Instance.enemies.RemoveAt(0);
                     Debug.Log("enemy removed");
-                    if (lManager.enemies.Count == 0)
+                    if (LevelManager.Instance.enemies.Count == 0)
                     {
-                        lManager.NextLevel();
+                        LevelManager.Instance.FinishLevel();
                     }
                 }
                 Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
