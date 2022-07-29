@@ -20,8 +20,22 @@ public class PlayerController : MonoBehaviour {
     public bool canMove = true;
     public Transform attackPoint;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public AudioClip[] swimSounds;
+
+    //Stuff from playerAttack
+    [SerializeField] private Animator[] tentacleAnims;
+    public float attackRange = .8f;
+    public LayerMask enemyLayer;
+    public float knockbackForce;
+
+    public bool canAttack = true;
+    public float attackDamage;
+    public float coolDownSeconds;
+
+    public AudioClip slap;
+    //End of stuff from playerAttack
+
 
     void Start(){
         audioSource = GetComponent<AudioSource>();
@@ -110,6 +124,13 @@ public class PlayerController : MonoBehaviour {
             int rand = Random.Range(0, swimSounds.Length);
             audioSource.PlayOneShot(swimSounds[rand]);
         }
+
+
+        //From playerAttack
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }
     }
 
     private void DetectGrounded(){
@@ -141,6 +162,58 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(seconds);
         _speed /= amount;
 
+    }
+
+
+    //From PlayerAttack
+    private IEnumerator AttackBuffer()
+    {
+        Debug.Log("Cannot attack");
+        canAttack = false;
+
+        yield return new WaitForSeconds(coolDownSeconds);
+        canAttack = true;
+        Debug.Log("Player can attack");
+
+    }
+
+    //From PlayerAttack
+    void Attack()
+    {
+        if (!canAttack) { return; }
+
+        //Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+        //damage hit enemies
+        foreach (Animator ani in tentacleAnims)
+        {
+            ani.SetTrigger("isAttacking");
+        }
+        anim.SetTrigger("isAttacking");
+        audioSource.PlayOneShot(slap);
+        foreach (Collider enemy in hitEnemies)
+        {
+            if (enemy != null)
+            {
+                var enemyHealth = enemy.gameObject.GetComponent<Health>();
+                enemyHealth.changeHealth(-attackDamage);
+                if (enemyHealth.isDead())
+                {
+                    enemy.gameObject.GetComponent<ExplosionDeath>().Death();
+                    LevelManager.Instance.enemies.RemoveAt(0);
+                    Debug.Log("enemy removed");
+                    if (LevelManager.Instance.enemies.Count == 0)
+                    {
+                        LevelManager.Instance.FinishLevel();
+                    }
+                }
+                Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
+                knockbackDir = knockbackDir.normalized;
+                knockbackDir.y = 0;
+                enemy.gameObject.GetComponent<Rigidbody>().velocity = knockbackDir * knockbackForce;
+            }
+        }
+        StartCoroutine(AttackBuffer());
     }
 }
 
