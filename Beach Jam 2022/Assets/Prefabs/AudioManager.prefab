@@ -47,7 +47,19 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 7102a71bbdf6afb47adfa3522bd00e04, type: 3}
-    volume: 0.3
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Onwards
+    clip: {fileID: 8300000, guid: 73332da5b4d2afa4fbd9b9cbec70f95d, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: CannonShot
+    clip: {fileID: 8300000, guid: 52279964bdc37234d98e6ecd9e879941, type: 3}
+    volume: 0.328
     pitch: 1
     source: {fileID: 0}
     loop: 0
