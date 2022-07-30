@@ -499,6 +499,8 @@ MonoBehaviour:
   maxSpeed: 0.9
   coolDownSeconds: 5
   net: {fileID: 3321231815667772392, guid: 17a73a8d5a01d1a4092b0a69769694c7, type: 3}
+  speedDecrease: 0.5
+  netTime: 3
 --- !u!114 &64239731239430190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,6 +517,7 @@ MonoBehaviour:
   initialHealth: 5
   anim: {fileID: 0}
   am: {fileID: 0}
+  explosionPrefab: {fileID: 7635187030058423711, guid: 34c66b35a620ada4b8e3f8517498c6d6, type: 3}
   invincibilityDurationSeconds: 0.5
   isInvincible: 0
 --- !u!114 &64239731239430188
