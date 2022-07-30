@@ -8,23 +8,34 @@ using System.Linq;
 
 public class MusicPlayer : MonoBehaviour
 {
-
+    
     public List<string> BGMList;
     public string nextUp;
     public List<string> alreadyPlayed;
     public AudioManager am;
+    public bool BossLevel;
     // Start is called before the first frame update
+    
     void Start()
     {
 
         am = FindObjectOfType<AudioManager>();
-        var rand = UnityEngine.Random.Range(1,3);
-        if(rand == 1){
-            nextUp = "Onwards";
+        if(!BossLevel)
+        {
+            var rand = UnityEngine.Random.Range(1,3);
+        
+            if(rand == 1){
+                nextUp = "Onwards";
+            }
+            else if (rand == 2){
+                nextUp = "Theme";
+            }
         }
-        else if (rand == 2){
-            nextUp = "Theme";
+
+        else{
+            nextUp = "TheFireAndTheSea";
         }
+
         StartCoroutine(CheckBGM());
     }
 
@@ -62,7 +73,7 @@ public class MusicPlayer : MonoBehaviour
             if (nextUp == null)
             {
                 alreadyPlayed.Clear();
-                nextUp = "Onwards";
+                nextUp = BGMList[0];
             }
 
     }
