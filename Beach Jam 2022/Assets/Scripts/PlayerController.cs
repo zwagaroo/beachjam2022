@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour {
                 isMoving = false;
             }
 
-            if(isMoving && isRight && !isLeft && !isBackwards){
+            if(isRight && !isBackwards){
                 SR.flipX = true;
             } else{
                 SR.flipX =false;
