@@ -52,7 +52,7 @@ public class PauseGame : MonoBehaviour
         pauseScreen.SetActive(true);
     }
 
-    void StopPausing()
+    public void StopPausing()
     {
         Time.timeScale = 1;
         pauseScreen.SetActive(false);
