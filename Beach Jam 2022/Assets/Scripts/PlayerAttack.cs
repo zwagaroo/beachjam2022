@@ -14,10 +14,14 @@ public class PlayerAttack : MonoBehaviour
     public bool canAttack = true;
     public float attackDamage;
     public float coolDownSeconds;
-
+    public AudioManager am;
     public AudioSource aSource;
     public AudioClip slap;
     //coroutine to prevent attack spam
+
+    void Start(){
+        am = FindObjectOfType<AudioManager>();
+    }
 
     private IEnumerator AttackBuffer()
     {
@@ -47,7 +51,8 @@ public class PlayerAttack : MonoBehaviour
             ani.SetTrigger("isAttacking");
         }
         anim.SetTrigger("isAttacking");
-        aSource.PlayOneShot(slap);
+        print(am.sounds);
+        am.Play("Player_Slap");
         foreach(Collider enemy in hitEnemies){
             if (enemy != null)
             {
