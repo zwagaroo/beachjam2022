@@ -15,7 +15,7 @@ public class IntroSceneManager : MonoBehaviour
 
     //Once intro dialogue is over, start actual game scene.
     public void HandleEndDialogue(){
-        SceneManager.LoadScene("OceanScene");
+        SceneManager.LoadScene("level1");
     }
 
 }
