@@ -74,6 +74,10 @@ public class LevelManager : MonoBehaviour
 
         SetupColliders();
         waterVolumeHelper = ocean.GetComponent<WaterVolumeHelper>();
+        WaterVolumeFloater[] floaters = (WaterVolumeFloater[]) GameObject.FindObjectsOfType(typeof(WaterVolumeFloater));
+        foreach(WaterVolumeFloater floater in floaters){
+            floater.WaterVolumeHelper = waterVolumeHelper;
+        }
     }
 
     void Update(){

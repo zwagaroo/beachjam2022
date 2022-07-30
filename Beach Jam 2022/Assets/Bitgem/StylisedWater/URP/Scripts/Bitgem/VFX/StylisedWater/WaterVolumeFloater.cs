@@ -20,13 +20,15 @@ namespace Bitgem.VFX.StylisedWater
 
         void Update()
         {
-            var instance = WaterVolumeHelper ? WaterVolumeHelper : WaterVolumeHelper.Instance;
-            if (!instance)
-            {
-                return;
-            }
+            if(WaterVolumeHelper){
+                var instance = WaterVolumeHelper ? WaterVolumeHelper : WaterVolumeHelper.Instance;
+                if (!instance)
+                {
+                    return;
+                }
 
-            transform.position = new Vector3(transform.position.x, instance.GetHeight(transform.position) ?? transform.position.y, transform.position.z);
+                transform.position = new Vector3(transform.position.x, instance.GetHeight(transform.position) ?? transform.position.y, transform.position.z);
+            }
         }
 
         #endregion
