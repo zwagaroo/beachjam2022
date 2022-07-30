@@ -21,7 +21,7 @@ public class ExplosionDeath : MonoBehaviour
     IEnumerator DeathTimer(float time)
     {
         yield return new WaitForSeconds(time);
-        var explosionObject = Instantiate(explosionPrefab, transform.position + new Vector3(0,5f,0), transform.rotation);
+        var explosionObject = Instantiate(explosionPrefab, transform.position, transform.rotation);
         var explosion = explosionObject.GetComponent<ParticleSystem>();
         Destroy(this.gameObject);
         //yield return new WaitUntil(() => explosion.isPlaying == false);
@@ -32,7 +32,7 @@ public class ExplosionDeath : MonoBehaviour
     public void Death()
     {
         //yield return new WaitForSeconds(time);
-        var explosionObject = Instantiate(explosionPrefab, transform.position + new Vector3(0, 5f, 0), this.transform.rotation);
+        var explosionObject = Instantiate(explosionPrefab, transform.position, this.transform.rotation);
         //var explosion = explosionObject.GetComponent<ParticleSystem>();
         Destroy(this.gameObject);
         //yield return new WaitUntil(() => explosion.isPlaying == false);

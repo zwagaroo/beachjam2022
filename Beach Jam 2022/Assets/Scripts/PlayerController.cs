@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
     public float knockbackForce;
 
     public bool canAttack = true;
-    public float attackDamage;
+    public double attackDamage;
     public float coolDownSeconds;
 
     public AudioClip slap;
@@ -228,28 +228,33 @@ public class PlayerController : MonoBehaviour {
         //Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
         //damage hit enemies
+        Debug.Log(hitEnemies.Length);
         foreach (Animator ani in tentacleAnims)
         {
             ani.SetTrigger("isAttacking");
         }
         anim.SetTrigger("isAttacking");
         am.Play("Player_Slap");
+        Debug.Log(hitEnemies[0] + "enemy");
         foreach (Collider enemy in hitEnemies)
         {
+   
             if (enemy != null)
             {
                 var enemyHealth = enemy.gameObject.GetComponent<Health>();
+                Debug.Log(enemyHealth + "enemy health");
                 enemyHealth.changeHealth(-attackDamage);
-                if (enemyHealth.isDead())
-                {
-                    enemy.gameObject.GetComponent<ExplosionDeath>().Death();
-                    LevelManager.Instance.enemies.RemoveAt(0);
-                    Debug.Log("enemy removed");
-                    if (LevelManager.Instance.enemies.Count == 0)
-                    {
-                        LevelManager.Instance.FinishLevel();
-                    }
-                }
+
+                // if (enemyHealth.isDead())
+                // {
+                //     enemy.gameObject.GetComponent<ExplosionDeath>().Death();
+                //     LevelManager.Instance.enemies.RemoveAt(0);
+                //     Debug.Log("enemy removed");
+                //     if (LevelManager.Instance.enemies.Count == 0)
+                //     {
+                //         LevelManager.Instance.FinishLevel();
+                //     }
+                // }
                 Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
                 knockbackDir = knockbackDir.normalized;
                 knockbackDir.y = 0;
@@ -259,12 +264,12 @@ public class PlayerController : MonoBehaviour {
         StartCoroutine(AttackBuffer());
     }
 
-    void OnTriggerEnter(Collider col){ //When player leaves map, create new level
-        Debug.Log("PLAYER COLLIDED WITH " + col.gameObject.name);
-        if(col.gameObject.tag == "LevelManager")
-        {
-            col.gameObject.GetComponent<LevelManager>().TransitionToNewLevel(col);
-        }
-    }
+    // void OnTriggerEnter(Collider col){ //When player leaves map, create new level
+    //     Debug.Log("PLAYER COLLIDED WITH " + col.gameObject.name);
+    //     if(col.gameObject.tag == "LevelManager")
+    //     {
+    //         col.gameObject.GetComponent<LevelManager>().TransitionToNewLevel(col);
+    //     }
+    // }
 }
 

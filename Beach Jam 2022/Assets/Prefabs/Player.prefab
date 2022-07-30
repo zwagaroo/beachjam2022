@@ -686,11 +686,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  initialHealth: 100
+  initialHealth: 10
   anim: {fileID: 5391054397365487792}
-  spriteRenderer: {fileID: 0}
-  halfheart: {fileID: 0}
-  emptyheart: {fileID: 0}
+  am: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  tryAgainPrefab: {fileID: 4110363973278385075, guid: a2f82f3626f35ff4299281924720f3b2, type: 3}
   invincibilityDurationSeconds: 1
   isInvincible: 0
 --- !u!114 &5391054397713672593
@@ -731,7 +731,7 @@ MonoBehaviour:
   - {fileID: 1322544954030080338}
   - {fileID: 236441241230083205}
   - {fileID: 7040873757444073958}
-  attackRange: 4
+  attackRange: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8

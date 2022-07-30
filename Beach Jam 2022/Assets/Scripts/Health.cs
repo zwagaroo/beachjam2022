@@ -15,13 +15,19 @@ public class Health : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite halfheart;
     public Sprite emptyheart;
+    public AudioManager am;
+    public GameObject explosionPrefab;
+    public GameObject tryAgainPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = initialHealth;
-        healthBar.maxValue = (float)initialHealth;
-        healthBar.value = (float)currentHealth;
+        if(healthBar != null)
+        {
+            healthBar.maxValue = (float)initialHealth;
+            healthBar.value = (float)currentHealth;
+        }
         print(currentHealth);
     }
 
@@ -51,15 +57,55 @@ public class Health : MonoBehaviour
         if (isInvincible) return;
 
         currentHealth += change;
-        healthBar.value = (float)currentHealth;
+
+        if(healthBar != null)
+        {
+
+            healthBar.value = (float)currentHealth;
+
+        }
+
+
+        if (isDead()){
+            if(gameObject.tag == "Player")
+            {
+                StartCoroutine(PlayerDeath());
+                //Player death sequence
+            }
+            else
+            {
+                Death();
+            }
+        }
 
         print(currentHealth);
 
         StartCoroutine(BecomeTemporarilyInvincible());
     }
 
-    public bool isDead()
+    IEnumerator PlayerDeath()
     {
+        var explosionObject = Instantiate(explosionPrefab, transform.position, this.transform.rotation);
+        Time.timeScale = 0;
+        transform.GetChild(0).gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        Instantiate(tryAgainPrefab);
+        Destroy(this.gameObject);
+        Debug.Log("explosion done");
+
+    }
+
+    public void Death()
+    {
+        //yield return new WaitForSeconds(time);
+        var explosionObject = Instantiate(explosionPrefab, transform.position, this.transform.rotation);
+        //var explosion = explosionObject.GetComponent<ParticleSystem>();
+        Destroy(this.gameObject);
+        //yield return new WaitUntil(() => explosion.isPlaying == false);
+        Debug.Log("explosion done");
+    }
+
+    public bool isDead(){
         return (currentHealth <= 0);
     }
 
