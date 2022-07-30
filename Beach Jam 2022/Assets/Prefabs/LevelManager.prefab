@@ -90,10 +90,7 @@ MonoBehaviour:
   createNewOceanAtStart: 1
   oceanSize: 20
   oceanPrefab: {fileID: 3269382406253757877, guid: 2a476f774d9d70d4fa296322955f7d6e, type: 3}
-  islandPrefabs:
-  - {fileID: 919132149155446097, guid: f17f2b8b1fc779246853e7cf7820f6bf, type: 3}
-  - {fileID: 693844879826466108, guid: b71ddbb1a83c57b47a150f19226c2b37, type: 3}
-  - {fileID: 4333389566833392721, guid: c56be487bf94b7e4997845e53026eb69, type: 3}
+  islandPrefabs: []
   rockPrefabs: []
   treePrefabs: []
   daytimeSkybox: {fileID: 2100000, guid: 1265032bf77bd224489d8eff96a41392, type: 2}
