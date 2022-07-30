@@ -14,26 +14,30 @@ public class MusicPlayer : MonoBehaviour
     public List<string> alreadyPlayed;
     public AudioManager am;
     public bool BossLevel;
+    public bool endSeq;
     // Start is called before the first frame update
     
     void Start()
     {
 
         am = FindObjectOfType<AudioManager>();
-        if(!BossLevel)
+        if(BossLevel)
         {
-            var rand = UnityEngine.Random.Range(1,3);
-        
-            if(rand == 1){
-                nextUp = "Onwards";
+            foreach(Sound s in am.sounds){
+                am.Stop(s.name);
             }
-            else if (rand == 2){
-                nextUp = "Theme";
-            }
-        }
-
-        else{
             nextUp = "TheFireAndTheSea";
+        }
+        else if(endSeq){
+            foreach(Sound s in am.sounds){
+                am.Stop(s.name);
+            }
+            nextUp = "Theme";
+        }
+        else {
+
+            var rand = UnityEngine.Random.Range(0,BGMList.Count);
+            nextUp = BGMList[rand];
         }
 
         StartCoroutine(CheckBGM());
@@ -77,4 +81,7 @@ public class MusicPlayer : MonoBehaviour
             }
 
     }
+
+
+    
 }

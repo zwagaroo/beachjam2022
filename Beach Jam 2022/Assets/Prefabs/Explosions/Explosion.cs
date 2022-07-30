@@ -7,11 +7,13 @@ public class Explosion : MonoBehaviour
     ParticleSystem particleSystem;
 
     public AudioClip explosionSound;
+    public AudioManager am;
 
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<AudioSource>().PlayOneShot(explosionSound, 1.5f);
+        am = FindObjectOfType<AudioManager>();
+        am.Play("Explosion");
         particleSystem = GetComponent<ParticleSystem>();
         StartCoroutine(DeathTimer());
     }
