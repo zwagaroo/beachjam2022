@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 4544433236445420128}
   - component: {fileID: 4544433236445420129}
   - component: {fileID: 4544433236445420133}
-  - component: {fileID: 4544433236445420134}
+  - component: {fileID: 8533313287195999569}
   - component: {fileID: 4544433236445420135}
   - component: {fileID: 4544433236445420130}
   - component: {fileID: 4257641914583203272}
@@ -484,9 +484,10 @@ MonoBehaviour:
   healthBar: {fileID: 4544433234466953503}
   initialHealth: 5
   anim: {fileID: 0}
+  am: {fileID: 0}
   invincibilityDurationSeconds: 0.5
   isInvincible: 0
---- !u!114 &4544433236445420134
+--- !u!114 &8533313287195999569
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -495,7 +496,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4544433236445420131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d84fda0c008d5240856c8a29d82d441, type: 3}
+  m_Script: {fileID: 11500000, guid: d25dc80fc725b754ead01d0db197f719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
@@ -514,6 +515,10 @@ MonoBehaviour:
   heading: {x: 0, y: 0, z: 0}
   attacking: 0
   canAttack: 1
+  acceleration: 0.4
+  maxSpeed: 0.6
+  coolDownSeconds: 0
+  fleeRange: 0
 --- !u!114 &4544433236445420135
 MonoBehaviour:
   m_ObjectHideFlags: 0

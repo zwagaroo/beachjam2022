@@ -20,8 +20,7 @@ public class LevelManager : MonoBehaviour
     public Transform playerSpawn;
 
     //UI
-    public GameObject healthBarPrefab; //replace this later with HUD
-    public GameObject HUD;
+    public GameObject HUD; //should be in the level already
     public GameObject nextLevelArrowPrefab;
     private GameObject[] nextLevelArrows;
 
@@ -46,10 +45,11 @@ public class LevelManager : MonoBehaviour
     public GameObject[] treePrefabs;
 
     //Environmental Lighting Assets
-    private enum WeatherState{
+    public enum WeatherState{
         CLEAR,
         STORM
     }
+    public WeatherState levelWeather = WeatherState.CLEAR;
     public Material daytimeSkybox;
     public Material spookySkybox;
 
@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
 
         
         //Setup weather
-        SetWeather(WeatherState.CLEAR);
+        SetWeather(levelWeather);
 
         //Create ocean and world colliders
         if(createNewOceanAtStart){
@@ -98,7 +98,9 @@ public class LevelManager : MonoBehaviour
         followCamera.target = player;
 
         //Add healthbar to health component
-        player.GetComponent<Health>().healthBar = Instantiate(HUD).transform.GetChild(0).GetComponent<Slider>();
+        if(HUD){
+            player.GetComponent<Health>().healthBar = HUD.transform.GetChild(0).GetComponent<Slider>();
+        }
     }
 
     void SetupOcean(){
