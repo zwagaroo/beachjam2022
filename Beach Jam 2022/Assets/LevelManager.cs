@@ -53,19 +53,25 @@ public class LevelManager : MonoBehaviour
         //Set the LevelManager Singleton Instance
         Instance = this;
 
-        //Get all enemies in scene
+        //Setup player
+        SetupPlayer();
+
+        //Setup  all enemies in scene
         enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemiesInScene){
+            if(enemy.GetComponentInChildren<Turret>()){
+                enemy.GetComponentInChildren<Turret>().target=player.transform;
+            }
+            if(enemy.GetComponent<EnemyController>()){
+                enemy.GetComponent<EnemyController>().target=player.transform;
+            }
+        }
         
         //Setup weather
         SetWeather(levelWeather);
 
         SetupColliders();
         waterVolumeHelper = ocean.GetComponent<WaterVolumeHelper>();
-
-        //Setup player
-        SetupPlayer();
-        
-        //GenerateLevel();
     }
 
     void Update(){
@@ -78,6 +84,8 @@ public class LevelManager : MonoBehaviour
     void SetupPlayer(){
         player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
         followCamera.target = player;
+
+        if
 
         //Add healthbar to health component
         if(HUD){

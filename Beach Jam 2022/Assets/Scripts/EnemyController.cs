@@ -43,8 +43,6 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         //this is in update because I cant get it to work in start
-        target = LevelManager.Instance.player.transform;
-
         if (detectPlayer()){
             //start attack routine
             if(!attacking){
