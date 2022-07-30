@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ThemePlayer : MonoBehaviour
 {
-    public GameObject AudioManager;
+    public AudioSource theme;
     // Start is called before the first frame update
     void Start(){   
 
-        AudioManager.GetComponent<AudioManager>().Play("Theme");
+        theme.Play();
     }
 
     private void OnDestroy() {
-        AudioManager.GetComponent<AudioManager>().Stop("Theme");
-        return;  
+        theme.Stop();
     }
 }
