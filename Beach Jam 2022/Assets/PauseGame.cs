@@ -9,15 +9,26 @@ public class PauseGame : MonoBehaviour
     public bool pauseActive;
     public GameObject pauseScreen;
     public PlayerController pController;
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
-        
+        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
+        pController = LevelManager.Instance.player.gameObject.GetComponent<PlayerController>();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!pauseActive)

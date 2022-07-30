@@ -8,10 +8,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD:Beach Jam 2022/Assets/Prefabs/Boats/Pirate Ship (Turret)/Pirate Ship(Turret).prefab
-  - component: {fileID: 7678812561232141409}
-  - component: {fileID: 7722089531453248887}
-=======
   - component: {fileID: 8219057601657568833}
   - component: {fileID: 8559212590384130593}
   - component: {fileID: 2987720690880545433}
