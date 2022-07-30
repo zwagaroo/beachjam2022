@@ -94,6 +94,7 @@ public class LevelManager : MonoBehaviour
         //Add healthbar to health component
         if(HUD){
             player.GetComponent<Health>().healthBar = HUD.transform.GetChild(0).GetComponent<Slider>();
+            player.GetComponent<Health>().heartImage = HUD.transform.GetChild(0).GetChild(3).GetComponent<Image>();
         }
     }
 
