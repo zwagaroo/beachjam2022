@@ -53,7 +53,7 @@ public class EnemyController : MonoBehaviour
     {
         //Follow();
         //Look();
-        if (Vector3.Distance(this.transform.position, target.position) > minDist)
+        if (true || Vector3.Distance(this.transform.position, target.position) > minDist)
         {
             Move();
 		}
@@ -72,7 +72,7 @@ public class EnemyController : MonoBehaviour
     //    transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
     //}
 
-    protected void Rotate()
+    protected virtual void Rotate()
     {
         Vector3 direction = Vector3.RotateTowards(transform.forward, new Vector3(heading.x, transform.position.y, heading.z), 4 * Mathf.PI, 0);
         direction.y = 0;
