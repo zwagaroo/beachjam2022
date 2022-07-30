@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 3764227537654450720}
   - component: {fileID: 6077391573002273731}
   m_Layer: 3
-  m_Name: Sailboat
+  m_Name: Sailboat(Turret)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -106,7 +106,7 @@ public class DialogueManager : MonoBehaviour
         for (int i = 0; i < lines[lineCounter].text.Length; i++)
         {
             dialogueText.text += sentenceArray[i];
-            FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Play("TextScrollBlip");
+            FindObjectOfType<AudioManager>().Play("TextScrollBlip");
             yield return new WaitForSeconds(.04f);
             FindObjectOfType<AudioManager>().GetComponent<AudioManager>().Stop("TextScrollBlip");
         }

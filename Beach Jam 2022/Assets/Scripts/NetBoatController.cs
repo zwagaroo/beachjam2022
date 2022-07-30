@@ -7,7 +7,8 @@ public class NetBoatController : EnemyController
     public float acceleration;
     public float maxSpeed;
     public float coolDownSeconds;
- 
+    public GameObject net;
+    
     public override void Move() {
         //if attacking do not move
         if(attacking){return;}
@@ -61,14 +62,26 @@ public class NetBoatController : EnemyController
     public override void Attack(){
         print("running");
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
-        if(hitPlayer.Length != 0){ 
+        
+        if (hitPlayer.Length != 0){
+            //ThrowNet(target.position);
             foreach(Collider player in hitPlayer){
                 player.gameObject.GetComponent<Health>().changeHealth(-1*attackDamage);
-                StartCoroutine(player.gameObject.GetComponent<PlayerController>().speedChange(.5f, 3));
+                StartCoroutine(player.gameObject.GetComponent<PlayerController>().speedChange(.5f, 3));                
             }
         }
         StartCoroutine(AttackBuffer());
     }
 
+    void ThrowNet(Vector3 position)
+    {
+        Vector3 heading = target.position - transform.position;
+        heading.Normalize();
+        var newnet = Instantiate(net, transform.position, transform.rotation);
+        Vector3 direction = Vector3.RotateTowards(newnet.transform.forward, target.position, 2 * Mathf.PI, 0);
+        newnet.transform.rotation = Quaternion.LookRotation(direction);
+        newnet.GetComponent<NetProjectile>().target = heading;
+        newnet.GetComponent<NetProjectile>().absoluteTarget = target;
+    }
 
 }

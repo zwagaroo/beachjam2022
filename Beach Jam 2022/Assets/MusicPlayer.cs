@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.Audio;
+using System;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 
 public class MusicPlayer : MonoBehaviour
@@ -31,17 +33,13 @@ public class MusicPlayer : MonoBehaviour
         }
 
         void PlayBGM()
-        {
-            foreach (Sound s in am.currentlyPlaying)
+        {       
+            foreach (string name in BGMList)
             {
-                foreach (string name in BGMList)
-                {
-                    if (s.name == name && s.source.isPlaying == true) { return; }
-                }
+                if (Array.Find(am.GetComponent<AudioManager>().sounds, sound => sound.name == name).source.isPlaying == true) { print("hello"); return; }
             }
 
             print("works");
-
             am.GetComponent<AudioManager>().Play(nextUp);
             alreadyPlayed.Add(nextUp);
             nextUp = null;

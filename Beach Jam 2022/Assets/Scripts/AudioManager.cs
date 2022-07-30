@@ -46,27 +46,38 @@ public class AudioManager : MonoBehaviour
     }
 
     public void Play(string name){
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Array.Find(sounds, sound => sound.name == name).source.Play();
+        currentlyPlaying.Add(Array.Find(sounds, sound => sound.name == name));
+        StartCoroutine(Clean(name));
+
+/*         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
         currentlyPlaying.Add(s);
-        StartCoroutine(Clean(name));
+        StartCoroutine(Clean(name)); */
     }
 
     public void Stop(string name){
-        currentlyPlaying.Find(s => s.name == name).source.Stop();
-        currentlyPlaying.Remove(currentlyPlaying.Find(s => s.name == name));
+        Array.Find(sounds, sound => sound.name == name).source.Stop();
+        if(currentlyPlaying.FirstOrDefault(x => x.name == name) != null)
+        {
+            currentlyPlaying.Remove(Array.Find(sounds, sound => sound.name == name));
+        }
+/*         currentlyPlaying.Find(s => s.name == name).source.Stop();
+        currentlyPlaying.Remove(currentlyPlaying.Find(s => s.name == name)); */
     }
 
     public void Pause(string name){
-        currentlyPlaying.Find(s => s.name == name).source.Pause();
+        Array.Find(sounds, sound => sound.name == name).source.Pause();
+/*         currentlyPlaying.Find(s => s.name == name).source.Pause();
         currentlyPaused.Add(currentlyPlaying.Find(s => s.name == name));
-        currentlyPlaying.Remove(currentlyPlaying.Find(s => s.name == name));
+        currentlyPlaying.Remove(currentlyPlaying.Find(s => s.name == name)); */
     }
 
     public void UnPause(string name){
-        currentlyPaused.Find(s => s.name == name).source.UnPause();
+        Array.Find(sounds, sound => sound.name == name).source.UnPause();
+/*         currentlyPaused.Find(s => s.name == name).source.UnPause();
         currentlyPlaying.Add(currentlyPlaying.Find(s => s.name == name));
-        currentlyPaused.Remove(currentlyPlaying.Find(s => s.name == name));
+        currentlyPaused.Remove(currentlyPlaying.Find(s => s.name == name)); */
  
     }
 
