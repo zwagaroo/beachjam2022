@@ -17,7 +17,13 @@ public class MusicPlayer : MonoBehaviour
     {
 
         am = FindObjectOfType<AudioManager>();
-        nextUp = "Onwards";
+        var rand = UnityEngine.Random.RangeInt(1,2);
+        if(rand == 1){
+            nextUp = "Onwards";
+        }
+        else if (rand == 2){
+            nextUp = "Theme";
+        }
         StartCoroutine(CheckBGM());
     }
 
@@ -39,7 +45,6 @@ public class MusicPlayer : MonoBehaviour
                 if (Array.Find(am.GetComponent<AudioManager>().sounds, sound => sound.name == name).source.isPlaying == true) { print("hello"); return; }
             }
 
-            print("works");
             am.GetComponent<AudioManager>().Play(nextUp);
             alreadyPlayed.Add(nextUp);
             nextUp = null;
