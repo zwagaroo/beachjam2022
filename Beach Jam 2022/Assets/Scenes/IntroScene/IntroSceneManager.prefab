@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4140365456770514745}
   - component: {fileID: 4140365456770514744}
+  - component: {fileID: 4140365456186212043}
   m_Layer: 0
   m_Name: IntroSceneManager
   m_TagString: Untagged
@@ -45,6 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9fcff4e3f349f4286240b8461a40e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 4698760366671726603}
+--- !u!114 &4140365456186212043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4140365456770514726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc41b77941de154299a4b2897d62d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4140365456022933864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -60,6 +74,38 @@ PrefabInstance:
       propertyPath: intro.Array.data[3].text
       value: These foolish mortals have robbed me of my most precious possession...
       objectReference: {fileID: 0}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: intro.Array.data[4].text
+      value: Now, they shall suffer my wrath!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: intro.Array.data[0].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 427f6ff1b92355745bc2fe6115eca053, type: 3}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: intro.Array.data[1].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 96cdbbddb59da144fa7b8e989dc45db4, type: 3}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: intro.Array.data[2].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 427f6ff1b92355745bc2fe6115eca053, type: 3}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: intro.Array.data[3].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: d2cb597ff4f833d429896623bd7241dd, type: 3}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: intro.Array.data[4].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: d2cb597ff4f833d429896623bd7241dd, type: 3}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: ending.Array.data[1].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 96cdbbddb59da144fa7b8e989dc45db4, type: 3}
+    - target: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+      propertyPath: ending.Array.data[3].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 427f6ff1b92355745bc2fe6115eca053, type: 3}
     - target: {fileID: 8665156419888912740, guid: b984f45901716e24c884244614dab2b6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -110,6 +156,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b984f45901716e24c884244614dab2b6, type: 3}
+--- !u!114 &4698760366671726603 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8665156419888912739, guid: b984f45901716e24c884244614dab2b6, type: 3}
+  m_PrefabInstance: {fileID: 4140365456022933864}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84e3dcaeb6c0960429de032d601c08f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4698760366671726604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8665156419888912740, guid: b984f45901716e24c884244614dab2b6, type: 3}
