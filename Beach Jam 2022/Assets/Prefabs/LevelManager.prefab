@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3182655647290479013}
   m_Layer: 0
   m_Name: LevelManager
-  m_TagString: Untagged
+  m_TagString: LevelManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51379a43709322c4eb410388f45cf355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 0
+  maxLevels: 2
   followCamera: {fileID: 0}
   playerPrefab: {fileID: 5391054397713672599, guid: 9afe3ea2ff0d24d46aa904ef26d27e7b, type: 3}
   playerSpawn: {fileID: 70251302087635512}
@@ -88,14 +90,18 @@ MonoBehaviour:
   createNewOceanAtStart: 1
   oceanSize: 20
   oceanPrefab: {fileID: 3269382406253757877, guid: 2a476f774d9d70d4fa296322955f7d6e, type: 3}
-  islandPrefabs: []
+  islandPrefabs:
+  - {fileID: 919132149155446097, guid: f17f2b8b1fc779246853e7cf7820f6bf, type: 3}
+  - {fileID: 693844879826466108, guid: b71ddbb1a83c57b47a150f19226c2b37, type: 3}
+  - {fileID: 4333389566833392721, guid: c56be487bf94b7e4997845e53026eb69, type: 3}
   rockPrefabs: []
   treePrefabs: []
   daytimeSkybox: {fileID: 2100000, guid: 1265032bf77bd224489d8eff96a41392, type: 2}
   spookySkybox: {fileID: 2100000, guid: fdeaf622ccc40b64aa54caea48619ecb, type: 2}
-  enemyTypePrefabs:
-  - {fileID: 3764227537654450721, guid: 04dd4e840e81c6d4a9e01514257a19c3, type: 3}
-  navalMinePrefab: {fileID: 919132149155446097, guid: e1c47f0f7cc9b2a4ea210e47719a3997, type: 3}
+  sailboatPrefab: {fileID: 0}
+  pirateShipPrefab: {fileID: 0}
+  bossShipPrefab: {fileID: 0}
+  navalMinePrefab: {fileID: 239571516819322062, guid: c75afd79b15bca449bfab78bd47174fd, type: 3}
   enemies: []
   spPoints: []
   waterVolumeHelper: {fileID: 0}

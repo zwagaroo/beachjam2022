@@ -130,14 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 70251302087635512, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 70251302087635512, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 3182655647290479010, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -186,38 +178,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3182655647290479012, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: m_TagString
-      value: LevelManager
-      objectReference: {fileID: 0}
     - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
       propertyPath: ocean
       value: 
       objectReference: {fileID: 744464376}
     - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: oceanSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: createOcean
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
       propertyPath: followCamera
       value: 
       objectReference: {fileID: 311969720}
-    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: navalMinePrefab
-      value: 
-      objectReference: {fileID: 239571516819322062, guid: c75afd79b15bca449bfab78bd47174fd, type: 3}
-    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: spawnRangeMax.x
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
-      propertyPath: spawnRangeMax.y
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
 --- !u!1 &203844586

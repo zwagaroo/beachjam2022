@@ -36,6 +36,7 @@ public class LevelManager : MonoBehaviour
     private float worldBoundaryColliderWidth = 1f;
     private float worldBoundaryColliderOffset = 0f;
 
+    //public RandomlyGeneratedType[] assetsToSpawn;
 
     //Environmental Prefabs
     public GameObject[] islandPrefabs;
@@ -51,7 +52,9 @@ public class LevelManager : MonoBehaviour
     public Material spookySkybox;
 
     //Enemy Spawning
-    public GameObject[] enemyTypePrefabs;
+    public GameObject sailboatPrefab;
+    public GameObject pirateShipPrefab;
+    public GameObject bossShipPrefab;
     public GameObject navalMinePrefab;
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
 
@@ -82,6 +85,10 @@ public class LevelManager : MonoBehaviour
         GenerateLevel();
         FinishLevel();
 
+    }
+
+    void Update(){
+        //check to see if any enemies;
     }
 
     void SetupPlayer(){
@@ -139,12 +146,32 @@ public class LevelManager : MonoBehaviour
     void SpawnEnemies()
     {
         int numberOfEnemies = Random.Range(2, 7); //Generate random number of enemies
-        spPoints = PoissonDiscSampling.GeneratePoints(2f, new Vector2(oceanSize, oceanSize), 15);
+        int numberOfMines = Random.Range(0, 6);
+        int numberOfIslands = Random.Range(5, 15);
 
+        int numReservedPoints = numberOfEnemies+numberOfMines+numberOfIslands; //TODO: make this a sum of all the above random pieces
+
+        spPoints = PoissonDiscSampling.GeneratePoints(2f, new Vector2(oceanSize, oceanSize), numReservedPoints);
+
+        /*
         foreach(Vector2 coord in spPoints){
             Debug.Log(coord);
             GameObject mine = Instantiate(navalMinePrefab, new Vector3(coord.x, 2f, coord.y), Quaternion.identity);
         }
+        */
+
+        //Generate Islands
+        for(int i =0; i<numberOfIslands; i+=1){
+            int randomIndex = Random.Range(0, spPoints.Count);
+            Vector2 spawnPos = spPoints[randomIndex];
+            spPoints.RemoveAt(randomIndex);
+            GameObject island = Instantiate(islandPrefabs[Random.Range(0,islandPrefabs.Length)], new Vector3(spawnPos.x, 1f, spawnPos.y), Quaternion.identity);
+            island.tag = "RandomlyGeneratedObject";
+        }
+
+
+
+        //for(int i = 0; i)
 
         /*
         for (int i=0; i < numberOfEnemies; i+= 1)
@@ -212,8 +239,12 @@ public class LevelManager : MonoBehaviour
 
     public void TransitionToNewLevel(Collider exitCollider){
     
+        GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("RandomlyGeneratedObject");
+        foreach(GameObject obj in objectsToDelete){
+            Destroy(obj);
+        }
+        GenerateLevel();
         spawnPlayerOppositeWorldBoundary(getWorldBoundaryFromCollider(exitCollider));
-
     }
 
     public Vector3 getMidPointOfWorldBoundary(WorldBoundary boundary, float boundaryWidth, float y, float perpendicularOffset=0f){ //Pos offset is pointing outwards, neg offset is pointing inwards.
@@ -262,3 +293,4 @@ public class LevelManager : MonoBehaviour
         }
     }
 }
+

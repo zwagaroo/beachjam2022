@@ -379,7 +379,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3761186860425493982}
-  - component: {fileID: 1723296730723928854}
   - component: {fileID: 2400741230802283540}
   - component: {fileID: 6504674057286590241}
   m_Layer: 7
@@ -404,24 +403,6 @@ Transform:
   m_Father: {fileID: 5391054397713672598}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
---- !u!114 &1723296730723928854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5207944205598521817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d12cc82a92c8a40ae68b416dc8f703, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballPrefab: {fileID: 6233837292545193898, guid: 7a9a6075282c2794789908739aca4f6d, type: 3}
-  mCamera: {fileID: 0}
-  player: {fileID: 5391054397713672598}
-  projectileCanvas: {fileID: 0}
-  tentacleAnim: {fileID: 2400741230802283540}
-  throwAnimation: {fileID: 7400000, guid: f860bf50b436a9049961e57ebb27d66e, type: 2}
 --- !u!95 &2400741230802283540
 Animator:
   serializedVersion: 4
@@ -721,6 +702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6ef1fab92f5e147b6c4d9ca51110ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputDisabled: 0
   _rb: {fileID: 5391054397713672595}
   _speed: 0.1
   groundPoint: {fileID: 5391054396656867843}
