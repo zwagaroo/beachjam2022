@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
     [SerializeField]
     private Animator anim;
     public AudioManager am;
+    public GameObject explosionPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,9 +40,31 @@ public class Health : MonoBehaviour
 
         }
 
+
+        if (isDead()){
+            if(gameObject.tag == "Player")
+            {
+                //Player death sequence
+            }
+            else
+            {
+                Death();
+            }
+        }
+
         print(currentHealth);
 
         StartCoroutine(BecomeTemporarilyInvincible());
+    }
+
+    public void Death()
+    {
+        //yield return new WaitForSeconds(time);
+        var explosionObject = Instantiate(explosionPrefab, transform.position, this.transform.rotation);
+        //var explosion = explosionObject.GetComponent<ParticleSystem>();
+        Destroy(this.gameObject);
+        //yield return new WaitUntil(() => explosion.isPlaying == false);
+        Debug.Log("explosion done");
     }
 
     public bool isDead(){

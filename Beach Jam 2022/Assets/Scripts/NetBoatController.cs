@@ -30,7 +30,8 @@ public class NetBoatController : EnemyController
             Vector3 moveVector = heading * acceleration;
             /* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
             _rb.velocity += moveVector;
-            if(_rb.velocity.magnitude > maxSpeed){
+            if (_rb.velocity.magnitude > maxSpeed)
+            {
                 _rb.velocity.Normalize();
                 _rb.velocity = _rb.velocity * maxSpeed;
             }

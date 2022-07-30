@@ -198,6 +198,7 @@ MonoBehaviour:
   initialHealth: 10
   anim: {fileID: 0}
   am: {fileID: 0}
+  explosionPrefab: {fileID: 7635187030058423711, guid: 34c66b35a620ada4b8e3f8517498c6d6, type: 3}
   invincibilityDurationSeconds: 0
   isInvincible: 0
 --- !u!114 &4445597753905723794
