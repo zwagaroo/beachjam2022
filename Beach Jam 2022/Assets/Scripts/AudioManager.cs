@@ -2,6 +2,8 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 public class AudioManager : MonoBehaviour
 {
@@ -34,10 +36,20 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    IEnumerator Clean(string name){
+            yield return new WaitForSeconds(Array.Find(sounds, sound => sound.name == name).clip.length + 1);
+            foreach(Sound s in currentlyPlaying.ToList()){
+                if(s.source.isPlaying == false){
+                    currentlyPlaying.Remove(s);
+                }
+            }
+    }
+
     public void Play(string name){
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
         currentlyPlaying.Add(s);
+        StartCoroutine(Clean(name));
     }
 
     public void Stop(string name){
