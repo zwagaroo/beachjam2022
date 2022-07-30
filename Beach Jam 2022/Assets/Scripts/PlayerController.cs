@@ -222,5 +222,13 @@ public class PlayerController : MonoBehaviour {
         }
         StartCoroutine(AttackBuffer());
     }
+
+    void OnTriggerEnter(Collider col){ //When player leaves map, create new level
+        Debug.Log("PLAYER COLLIDED WITH " + col.gameObject.name);
+        if(col.gameObject.tag == "LevelManager")
+        {
+            col.gameObject.GetComponent<LevelManager>().TransitionToNewLevel(col);
+        }
+    }
 }
 
