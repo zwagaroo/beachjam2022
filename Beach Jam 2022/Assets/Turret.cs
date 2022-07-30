@@ -14,7 +14,6 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = LevelManager.Instance.player.transform;
         am = FindObjectOfType<AudioManager>();
     }
 

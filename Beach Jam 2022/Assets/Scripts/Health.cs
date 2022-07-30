@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
     private double currentHealth;
     [SerializeField]
     private Animator anim;
-    public AudioManager am;
     //07/30: Heart sprite images initialized
     public SpriteRenderer spriteRenderer;
     public Sprite halfheart;
