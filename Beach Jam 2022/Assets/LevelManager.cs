@@ -147,7 +147,7 @@ public class LevelManager : MonoBehaviour
     void GenerateLevel(){
         Debug.Log("GENERATING LEVEL");
         SetWorldBoundariesActive(true);
-        SpawnEnemies();
+        /* SpawnEnemies(); */
     }
 
     void SpawnEnemies()

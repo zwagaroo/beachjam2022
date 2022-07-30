@@ -50,13 +50,13 @@ MonoBehaviour:
     volume: 0.606
     pitch: 1
     source: {fileID: 0}
-    loop: 1
+    loop: 0
   - name: Onwards
     clip: {fileID: 8300000, guid: 73332da5b4d2afa4fbd9b9cbec70f95d, type: 3}
     volume: 0.328
     pitch: 1
     source: {fileID: 0}
-    loop: 1
+    loop: 0
   - name: CannonShot
     clip: {fileID: 8300000, guid: 52279964bdc37234d98e6ecd9e879941, type: 3}
     volume: 0.328
@@ -110,7 +110,7 @@ MonoBehaviour:
     volume: 0.56
     pitch: 1
     source: {fileID: 0}
-    loop: 1
+    loop: 0
   - name: Player_Death
     clip: {fileID: 8300000, guid: 3a92e48f15e6aac4e85b1f17d9b6bb2c, type: 3}
     volume: 0.56
