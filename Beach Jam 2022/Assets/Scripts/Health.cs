@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
     {
         if(gameObject.tag == "Player")
         {
-            ChangeSprite();
+            //ChangeSprite();
         }
     }
 
