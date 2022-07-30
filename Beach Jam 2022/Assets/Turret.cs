@@ -20,14 +20,15 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Vector3 direction = Vector3.RotateTowards(transform.forward, target.position, Mathf.PI, -Mathf.PI);
-        transform.rotation = Quaternion.LookRotation(direction);
-        if(Vector3.Distance(target.position, transform.position) < minRange && canShoot)
-        {
-            canShoot = false;
-            Invoke("ShootCooldown", shootDelay);
-            Shoot();
+        if(target){
+            Vector3 direction = Vector3.RotateTowards(transform.forward, target.position, Mathf.PI, -Mathf.PI);
+            transform.rotation = Quaternion.LookRotation(direction);
+            if(Vector3.Distance(target.position, transform.position) < minRange && canShoot)
+            {
+                canShoot = false;
+                Invoke("ShootCooldown", shootDelay);
+                Shoot();
+            }
         }
     }
 

@@ -55,10 +55,12 @@ public class EnemyController : MonoBehaviour
     {
         //Follow();
         //Look();
-        if (true || Vector3.Distance(this.transform.position, target.position) > minDist)
-        {
-            Move();
-		}
+        if(target){
+            if (true || Vector3.Distance(this.transform.position, target.position) > minDist)
+            {
+                Move();
+            }
+        }
     }
 
     //private void Follow()
