@@ -53,7 +53,7 @@ MonoBehaviour:
     loop: 1
   - name: Onwards
     clip: {fileID: 8300000, guid: 73332da5b4d2afa4fbd9b9cbec70f95d, type: 3}
-    volume: 0.328
+    volume: 0.262
     pitch: 1
     source: {fileID: 0}
     loop: 1
@@ -63,3 +63,86 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+<<<<<<< Updated upstream
+=======
+  - name: swim1
+    clip: {fileID: 8300000, guid: d6f78789efa31af4f89efa67b282d8b7, type: 3}
+    volume: 0.66
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: swim2
+    clip: {fileID: 8300000, guid: 518ead6edeecfd64ebc70f45a2185593, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: swim3
+    clip: {fileID: 8300000, guid: 4112c716a2822c943bbd964eb36dccd8, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: swim4
+    clip: {fileID: 8300000, guid: fba85a0368481d8429e685181dd72646, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: swim5
+    clip: {fileID: 8300000, guid: ca47b7f4fe828f449b72bbc7c8fab875, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: swim6
+    clip: {fileID: 8300000, guid: 1c7faf1d537aefa45b4d89a07978e94a, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: swim6
+    clip: {fileID: 8300000, guid: 1c7faf1d537aefa45b4d89a07978e94a, type: 3}
+    volume: 0.328
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: TheFireAndTheSea
+    clip: {fileID: 8300000, guid: 4fe2f052f908b2b4a8230bd8bc973d68, type: 3}
+    volume: 0.56
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Player_Death
+    clip: {fileID: 8300000, guid: 3a92e48f15e6aac4e85b1f17d9b6bb2c, type: 3}
+    volume: 0.56
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Slap
+    clip: {fileID: 8300000, guid: abfc6bbe8c8b9c849bb345eb5a87e0a0, type: 3}
+    volume: 0.56
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Damage
+    clip: {fileID: 8300000, guid: 376419a5424a9e3418d72f3a3afce045, type: 3}
+    volume: 0.56
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Player_Ink_Attack
+    clip: {fileID: 8300000, guid: 3ba5d21fa4a64f647b9e66ef3e08eefb, type: 3}
+    volume: 0.56
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: TextScrollBlip
+    clip: {fileID: 8300000, guid: 4c25b66cb88e99e4b8569d18b661925e, type: 3}
+    volume: 0.56
+    pitch: 1.01
+    source: {fileID: 0}
+    loop: 0
+  currentlyPlaying: []
+  currentlyPaused: []
+>>>>>>> Stashed changes
