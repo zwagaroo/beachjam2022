@@ -27,8 +27,10 @@ public class CannonBallProjectile : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other)
     {
+        Debug.Log("hit player");
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log(other.GetComponent<Health>());
             other.GetComponent<Health>().changeHealth(-dmg);
             Destroy(gameObject);
         }
