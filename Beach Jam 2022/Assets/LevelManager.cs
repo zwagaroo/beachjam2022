@@ -221,15 +221,15 @@ public class LevelManager : MonoBehaviour
     }
  */
 
-    public void TransitionToNewLevel(Collider exitCollider){
+    // public void TransitionToNewLevel(Collider exitCollider){
     
-        GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("RandomlyGeneratedObject");
-        foreach(GameObject obj in objectsToDelete){
-            Destroy(obj);
-        }
-        GenerateLevel();
-        spawnPlayerOppositeWorldBoundary(getWorldBoundaryFromCollider(exitCollider));
-    }
+    //     GameObject[] objectsToDelete = GameObject.FindGameObjectsWithTag("RandomlyGeneratedObject");
+    //     foreach(GameObject obj in objectsToDelete){
+    //         Destroy(obj);
+    //     }
+    //     //GenerateLevel();
+    //     spawnPlayerOppositeWorldBoundary(getWorldBoundaryFromCollider(exitCollider));
+    // }
 
     public Vector3 getMidPointOfWorldBoundary(WorldBoundary boundary, float boundaryWidth, float y, float perpendicularOffset=0f){ //Pos offset is pointing outwards, neg offset is pointing inwards.
         switch(boundary){ 
