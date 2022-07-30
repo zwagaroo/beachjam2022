@@ -688,8 +688,11 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   initialHealth: 10
   anim: {fileID: 5391054397365487792}
+  spriteRenderer: {fileID: 0}
+  halfheart: {fileID: 0}
+  emptyheart: {fileID: 0}
   am: {fileID: 0}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 7635187030058423711, guid: 34c66b35a620ada4b8e3f8517498c6d6, type: 3}
   tryAgainPrefab: {fileID: 4110363973278385075, guid: a2f82f3626f35ff4299281924720f3b2, type: 3}
   invincibilityDurationSeconds: 1
   isInvincible: 0

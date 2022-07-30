@@ -235,11 +235,10 @@ public class PlayerController : MonoBehaviour {
         }
         anim.SetTrigger("isAttacking");
         am.Play("Player_Slap");
-        Debug.Log(hitEnemies[0] + "enemy");
         foreach (Collider enemy in hitEnemies)
         {
    
-            if (enemy != null)
+            if (enemy != null && enemy.gameObject.GetComponent<Health>())
             {
                 var enemyHealth = enemy.gameObject.GetComponent<Health>();
                 Debug.Log(enemyHealth + "enemy health");
