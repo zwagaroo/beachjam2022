@@ -58,7 +58,9 @@ public class LevelManager : MonoBehaviour
     public GameObject pirateShipPrefab;
     public GameObject bossShipPrefab;
     public GameObject navalMinePrefab;
-    public List<EnemySpawn> enemies = new List<EnemySpawn>();
+    private List<EnemySpawn> enemies = new List<EnemySpawn>();
+
+    public List<GameObject> spawnedEnemies = new List<GameObject>();
 
     public List<Vector2> spPoints = new List<Vector2>();
 

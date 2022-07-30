@@ -240,16 +240,17 @@ public class PlayerController : MonoBehaviour {
             {
                 var enemyHealth = enemy.gameObject.GetComponent<Health>();
                 enemyHealth.changeHealth(-attackDamage);
-                if (enemyHealth.isDead())
-                {
-                    enemy.gameObject.GetComponent<ExplosionDeath>().Death();
-                    LevelManager.Instance.enemies.RemoveAt(0);
-                    Debug.Log("enemy removed");
-                    if (LevelManager.Instance.enemies.Count == 0)
-                    {
-                        LevelManager.Instance.FinishLevel();
-                    }
-                }
+
+                // if (enemyHealth.isDead())
+                // {
+                //     enemy.gameObject.GetComponent<ExplosionDeath>().Death();
+                //     LevelManager.Instance.enemies.RemoveAt(0);
+                //     Debug.Log("enemy removed");
+                //     if (LevelManager.Instance.enemies.Count == 0)
+                //     {
+                //         LevelManager.Instance.FinishLevel();
+                //     }
+                // }
                 Vector3 knockbackDir = enemy.gameObject.transform.position - attackPoint.position;
                 knockbackDir = knockbackDir.normalized;
                 knockbackDir.y = 0;
