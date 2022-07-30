@@ -76,7 +76,7 @@ public class EnemyController : MonoBehaviour
     {
         Vector3 direction = Vector3.RotateTowards(transform.forward, new Vector3(heading.x, transform.position.y, heading.z), 4 * Mathf.PI, 0);
         direction.y = 0;
-        _rb.transform.rotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 
     public virtual void Move()

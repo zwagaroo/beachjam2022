@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Bitgem.VFX.StylisedWater;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class LevelManager : MonoBehaviour
 
     //UI
     public GameObject healthBarPrefab; //replace this later with HUD
+    public GameObject HUD;
     public GameObject nextLevelArrowPrefab;
     private GameObject[] nextLevelArrows;
 
@@ -93,7 +95,10 @@ public class LevelManager : MonoBehaviour
 
     void SetupPlayer(){
         player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
-        followCamera.target = player; 
+        followCamera.target = player;
+
+        //Add healthbar to health component
+        player.GetComponent<Health>().healthBar = Instantiate(HUD).transform.GetChild(0).GetComponent<Slider>();
     }
 
     void SetupOcean(){
