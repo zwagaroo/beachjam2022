@@ -297,10 +297,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fishing Ship(Turret)
       objectReference: {fileID: 0}
-    - target: {fileID: 8533313287195999569, guid: 878a2f7d78da98e4893a5a1c5b72bd75, type: 3}
-      propertyPath: acceleration
-      value: 0.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 878a2f7d78da98e4893a5a1c5b72bd75, type: 3}
 --- !u!1 &308375581

@@ -518,7 +518,8 @@ MonoBehaviour:
   acceleration: 0.4
   maxSpeed: 0.6
   coolDownSeconds: 0
-  fleeRange: 0
+  approachRange: 6
+  approachPlayer: 1
 --- !u!114 &4544433236445420135
 MonoBehaviour:
   m_ObjectHideFlags: 0

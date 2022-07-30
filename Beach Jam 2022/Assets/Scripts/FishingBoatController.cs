@@ -7,7 +7,8 @@ public class FishingBoatController : EnemyController
     public float acceleration;
     public float maxSpeed;
     public float coolDownSeconds;
-	public float fleeRange;
+	public float approachRange;
+	public bool approachPlayer;
 	
 	private bool foundDirection = false;
 	private bool scared = false;
@@ -17,6 +18,12 @@ public class FishingBoatController : EnemyController
     public override void Move() {
         Rotate();
 		timeLeft -= 1;
+		if(approachPlayer && detectPlayer())
+		{
+			Approach();
+			return;
+		}
+		
 		if(!foundDirection)
 		{
 			if(timeLeft < 0)
@@ -57,7 +64,7 @@ public class FishingBoatController : EnemyController
 
     //player detection can be overriden
     public override bool detectPlayer(){
-        Collider[] hitPlayer = Physics.OverlapSphere(_rb.position, fleeRange, playerLayer);
+        Collider[] hitPlayer = Physics.OverlapSphere(_rb.position, approachRange, playerLayer);
         if(hitPlayer.Length != 0){
             return true;
         }
@@ -68,6 +75,22 @@ public class FishingBoatController : EnemyController
 	{
 		print("EEEEK");
 		heading = transform.position - target.position;
+		heading.Normalize();
+		heading.y = 0;
+		Vector3 moveVector = heading * acceleration;
+		/* var vector3 = Vector3.Lerp(transform.position, target.position, _speed * Time.deltaTime); */
+		_rb.velocity += moveVector;
+		if(_rb.velocity.magnitude > maxSpeed*1.1f){
+			_rb.velocity.Normalize();
+			_rb.velocity = _rb.velocity * (maxSpeed*1.1f);
+		}
+	}
+	
+	
+	private void Approach()
+	{
+		print("EEEEK");
+		heading = -1 * (transform.position - target.position);
 		heading.Normalize();
 		heading.y = 0;
 		Vector3 moveVector = heading * acceleration;
