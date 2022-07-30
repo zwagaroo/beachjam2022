@@ -85,7 +85,9 @@ public class LevelManager : MonoBehaviour
         player = Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
         followCamera.target = player;
 
-        if
+        if(GameObject.FindWithTag("SettingsMenu")){
+            GameObject.FindWithTag("SettingsMenu").GetComponent<PauseGame>().pController = player.GetComponent<PlayerController>();
+        }
 
         //Add healthbar to health component
         if(HUD){

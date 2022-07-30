@@ -28,7 +28,6 @@ public class PauseGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        pController = LevelManager.Instance.player.gameObject.GetComponent<PlayerController>();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!pauseActive)
