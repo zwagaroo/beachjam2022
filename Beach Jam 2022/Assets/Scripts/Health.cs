@@ -10,9 +10,11 @@ public class Health : MonoBehaviour
     private double currentHealth;
     [SerializeField]
     private Animator anim;
+    public AudioManager am;
     // Start is called before the first frame update
     void Start()
     {
+        am = FindObjectOfType<AudioManager>();
         currentHealth = initialHealth;
         healthBar.maxValue = (float)initialHealth;
         healthBar.value = (float)currentHealth;
@@ -22,6 +24,10 @@ public class Health : MonoBehaviour
     //the enemy will be able to access the Health of this so it can be changed.
     public void changeHealth(double change){
         if (isInvincible) return;
+        if(gameObject.tag == "Player"){
+            am.Play("Player_Damage");
+        }
+        
 
         currentHealth += change;
         healthBar.value = (float)currentHealth;

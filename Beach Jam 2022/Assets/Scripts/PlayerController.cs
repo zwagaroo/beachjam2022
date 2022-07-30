@@ -1,6 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.Audio;
+using System;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+
 
 public class PlayerController : MonoBehaviour {
     public bool inputDisabled = false;
@@ -25,6 +29,8 @@ public class PlayerController : MonoBehaviour {
     public AudioSource audioSource;
     public AudioClip[] swimSounds;
 
+    public AudioManager am;
+
     //Stuff from playerAttack
     [SerializeField] private Animator[] tentacleAnims;
     public float attackRange = .8f;
@@ -41,6 +47,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start(){
         audioSource = GetComponent<AudioSource>();
+        am = FindObjectOfType<AudioManager>();
     }
 
     private void Update() {
@@ -129,13 +136,42 @@ public class PlayerController : MonoBehaviour {
             canMove = true;
         }
         
-        //SWIM SOUNDS
-        if (!audioSource.isPlaying && isMoving)
-        {
-            int rand = Random.Range(0, swimSounds.Length);
-            audioSource.PlayOneShot(swimSounds[rand]);
-        }
+        swimSoundsPlay();
+ 
         
+    }
+
+    void swimSoundsPlay(){
+               //SWIM SOUNDS
+/*         Array.Find(am.sounds, sound => sound.name == "swim1").source.Play(); */
+
+        bool swim1Playing = Array.Find(am.sounds, sound => sound.name == "swim1").source.isPlaying;
+        bool swim2Playing = Array.Find(am.sounds, sound => sound.name == "swim2").source.isPlaying;
+        bool swim3Playing = Array.Find(am.sounds, sound => sound.name == "swim3").source.isPlaying;
+        bool swim4Playing = Array.Find(am.sounds, sound => sound.name == "swim4").source.isPlaying;
+        bool swim5Playing = Array.Find(am.sounds, sound => sound.name == "swim5").source.isPlaying;
+        bool swim6Playing = Array.Find(am.sounds, sound => sound.name == "swim6").source.isPlaying;
+        bool allNotPlaying = !swim1Playing && !swim2Playing && !swim3Playing && !swim4Playing && !swim5Playing && !swim6Playing;
+        print(allNotPlaying);
+        if (allNotPlaying && isMoving)
+        {
+            int rand = UnityEngine.Random.Range(1, 5);
+            if(rand == 1){
+                am.Play("swim1");
+            }
+            else if(rand == 2){
+                am.Play("swim2");
+            }
+            else if(rand == 3){
+                am.Play("swim3");
+            }
+            else if(rand == 4){
+                am.Play("swim4");
+            }
+            else if(rand == 5){
+                am.Play("swim6");
+            }
+        } 
     }
 
     private void DetectGrounded(){
@@ -197,7 +233,7 @@ public class PlayerController : MonoBehaviour {
             ani.SetTrigger("isAttacking");
         }
         anim.SetTrigger("isAttacking");
-        audioSource.PlayOneShot(slap);
+        am.Play("Player_Slap");
         foreach (Collider enemy in hitEnemies)
         {
             if (enemy != null)
