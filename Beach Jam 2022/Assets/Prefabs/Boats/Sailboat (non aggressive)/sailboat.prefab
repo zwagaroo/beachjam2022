@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 4445597753905723795}
   - component: {fileID: 4445597753905723794}
   - component: {fileID: 6502370028879091368}
+  - component: {fileID: -1792386787963338403}
   m_Layer: 0
   m_Name: sailboat
   m_TagString: Untagged
@@ -196,6 +197,7 @@ MonoBehaviour:
   healthBar: {fileID: 4445597752901495256}
   initialHealth: 10
   anim: {fileID: 0}
+  am: {fileID: 0}
   invincibilityDurationSeconds: 0
   isInvincible: 0
 --- !u!114 &4445597753905723794
@@ -243,6 +245,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WaterVolumeHelper: {fileID: 0}
+--- !u!114 &-1792386787963338403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562494964205529180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 243713ef60e9c0e40b102332fb8bf79e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 7635187030058423711, guid: 34c66b35a620ada4b8e3f8517498c6d6, type: 3}
 --- !u!1 &4445597751978087546
 GameObject:
   m_ObjectHideFlags: 0
