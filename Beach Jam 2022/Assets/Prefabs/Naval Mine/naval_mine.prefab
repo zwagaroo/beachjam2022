@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4591184798066565585}
   - component: {fileID: 1752988179943560475}
   - component: {fileID: 7498071377058683494}
+  - component: {fileID: 4865514244141751279}
   m_Layer: 0
   m_Name: naval_mine
   m_TagString: Untagged
@@ -62,8 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 18761e7ff5357324f94e83396bb2e773, type: 2}
-  - {fileID: 2100000, guid: a62982e5b3340e1489661219d6f885d8, type: 2}
+  - {fileID: 5828502202057895808, guid: e1c47f0f7cc9b2a4ea210e47719a3997, type: 3}
+  - {fileID: 7501444913965727245, guid: e1c47f0f7cc9b2a4ea210e47719a3997, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,3 +99,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 7635187030058423711, guid: 34c66b35a620ada4b8e3f8517498c6d6, type: 3}
+--- !u!114 &4865514244141751279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239571516819322062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36aa02d38bb10b548bc7b8879596b15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WaterVolumeHelper: {fileID: 0}

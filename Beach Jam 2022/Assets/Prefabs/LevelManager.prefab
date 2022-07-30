@@ -95,10 +95,8 @@ MonoBehaviour:
   spookySkybox: {fileID: 2100000, guid: fdeaf622ccc40b64aa54caea48619ecb, type: 2}
   enemyTypePrefabs:
   - {fileID: 3764227537654450721, guid: 04dd4e840e81c6d4a9e01514257a19c3, type: 3}
-  navalMinePrefab: {fileID: 0}
+  navalMinePrefab: {fileID: 919132149155446097, guid: e1c47f0f7cc9b2a4ea210e47719a3997, type: 3}
   enemies: []
-  spawnRangeMax: {x: 0, y: 0}
-  spawnRangeMin: {x: 0, y: 0}
   spPoints: []
   waterVolumeHelper: {fileID: 0}
 --- !u!1 &3363411522691664374

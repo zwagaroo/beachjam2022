@@ -6,6 +6,9 @@ using Bitgem.VFX.StylisedWater;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
+
+    public int currentLevel = 0;
+    public int maxLevels = 2;
     
     //Required setup
     public CameraFollow followCamera;
@@ -51,8 +54,7 @@ public class LevelManager : MonoBehaviour
     public GameObject[] enemyTypePrefabs;
     public GameObject navalMinePrefab;
     public List<EnemySpawn> enemies = new List<EnemySpawn>();
-    public Vector2 spawnRangeMax;
-    public Vector2 spawnRangeMin;
+
     public List<Vector2> spPoints = new List<Vector2>();
 
     //Implementation with ocean scene
@@ -131,15 +133,20 @@ public class LevelManager : MonoBehaviour
     void GenerateLevel(){
         Debug.Log("GENERATING LEVEL");
         SetWorldBoundariesActive(true);
-        //SpawnEnemies();
+        SpawnEnemies();
     }
 
     void SpawnEnemies()
     {
         int numberOfEnemies = Random.Range(2, 7); //Generate random number of enemies
-        Debug.Log(numberOfEnemies + " enemies");
-        spPoints = PoissonDiscSampling.GeneratePoints(5f, spawnRangeMax - spawnRangeMin, 30);
+        spPoints = PoissonDiscSampling.GeneratePoints(2f, new Vector2(oceanSize, oceanSize), 15);
 
+        foreach(Vector2 coord in spPoints){
+            Debug.Log(coord);
+            GameObject mine = Instantiate(navalMinePrefab, new Vector3(coord.x, 2f, coord.y), Quaternion.identity);
+        }
+
+        /*
         for (int i=0; i < numberOfEnemies; i+= 1)
         {
             int enemyIndex = Random.Range(0, enemyTypePrefabs.Length);
@@ -164,7 +171,7 @@ public class LevelManager : MonoBehaviour
             {
                 temp.GetComponentInChildren<Turret>().target = player.transform;
             }
-        } 
+        }*/
     }
 
     public void SetWorldBoundariesActive(bool isActive){
@@ -177,6 +184,7 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("Level complete!");
         SetWorldBoundariesActive(false);
+        currentLevel += 1;
         //TODO: Instantiate and populate nextLevelArrows here
     }
 

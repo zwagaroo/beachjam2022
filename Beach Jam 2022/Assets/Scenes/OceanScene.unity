@@ -206,6 +206,18 @@ PrefabInstance:
       propertyPath: followCamera
       value: 
       objectReference: {fileID: 311969720}
+    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
+      propertyPath: navalMinePrefab
+      value: 
+      objectReference: {fileID: 239571516819322062, guid: c75afd79b15bca449bfab78bd47174fd, type: 3}
+    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
+      propertyPath: spawnRangeMax.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3182655647290479013, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
+      propertyPath: spawnRangeMax.y
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd3a6f39f4355a74aa7c13c9f203d2a6, type: 3}
 --- !u!1 &203844586
