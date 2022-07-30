@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
     //Player Character
     public GameObject playerPrefab;
-    private GameObject player;
+    public GameObject player;
     public Transform playerSpawn;
 
     //UI

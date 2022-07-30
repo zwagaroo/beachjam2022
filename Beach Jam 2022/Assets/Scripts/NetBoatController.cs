@@ -9,6 +9,12 @@ public class NetBoatController : EnemyController
     public float coolDownSeconds;
     public GameObject net;
     
+    //what degree the net hurts player movement
+    public float speedDecrease = .5f;
+
+    //how long net lasts
+    public float netTime = 3f;
+
     public override void Move() {
         //if attacking do not move
         if(attacking){return;}
@@ -64,10 +70,10 @@ public class NetBoatController : EnemyController
         Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, attackRange, playerLayer);
         
         if (hitPlayer.Length != 0){
-            //ThrowNet(target.position);
+            ThrowNet(target.position);
             foreach(Collider player in hitPlayer){
                 player.gameObject.GetComponent<Health>().changeHealth(-1*attackDamage);
-                StartCoroutine(player.gameObject.GetComponent<PlayerController>().speedChange(.5f, 3));                
+                StartCoroutine(player.gameObject.GetComponent<PlayerController>().speedChange(speedDecrease, netTime));                
             }
         }
         StartCoroutine(AttackBuffer());
@@ -75,11 +81,12 @@ public class NetBoatController : EnemyController
 
     void ThrowNet(Vector3 position)
     {
+        target = LevelManager.Instance.player.transform;
         Vector3 heading = target.position - transform.position;
         heading.Normalize();
         var newnet = Instantiate(net, transform.position, transform.rotation);
-        Vector3 direction = Vector3.RotateTowards(newnet.transform.forward, target.position, 2 * Mathf.PI, 0);
-        newnet.transform.rotation = Quaternion.LookRotation(direction);
+        //Vector3 direction = Vector3.RotateTowards(newnet.transform.forward, target.position, 2 * Mathf.PI, 0);
+        //newnet.transform.rotation = Quaternion.LookRotation(direction);
         newnet.GetComponent<NetProjectile>().target = heading;
         newnet.GetComponent<NetProjectile>().absoluteTarget = target;
     }

@@ -13,13 +13,16 @@ public class NetProjectile : CannonBallProjectile
     {
         onPlayer = true;
         yield return new WaitForSeconds(3f);
-        onPlayer = false;
+        Destroy(gameObject);
     }
     public override void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             onPlayer = true;
+            transform.SetParent(absoluteTarget);
+            transform.position = absoluteTarget.position;
+            StartCoroutine(FollowPlayer());
         }
     }
 
@@ -27,12 +30,9 @@ public class NetProjectile : CannonBallProjectile
     {
         if (!onPlayer)
         {
-            Vector3 heading = absoluteTarget.position;
+            Vector3 heading = absoluteTarget.position - transform.position;
+            heading.Normalize();
             transform.position += heading * moveSpeed * Time.deltaTime;
-        }
-        else
-        {
-            transform.position = absoluteTarget.position;
         }
     }
 }

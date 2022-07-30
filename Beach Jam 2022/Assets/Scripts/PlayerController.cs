@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour {
         bool swim5Playing = Array.Find(am.sounds, sound => sound.name == "swim5").source.isPlaying;
         bool swim6Playing = Array.Find(am.sounds, sound => sound.name == "swim6").source.isPlaying;
         bool allNotPlaying = !swim1Playing && !swim2Playing && !swim3Playing && !swim4Playing && !swim5Playing && !swim6Playing;
-        print(allNotPlaying);
+        //print(allNotPlaying);
         if (allNotPlaying && isMoving)
         {
             int rand = UnityEngine.Random.Range(1, 5);

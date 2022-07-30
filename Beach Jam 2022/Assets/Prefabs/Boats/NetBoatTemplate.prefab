@@ -482,10 +482,10 @@ MonoBehaviour:
   target: {fileID: 0}
   _rb: {fileID: 64239731239430186}
   _speed: 0.5
-  minDist: 5
+  minDist: 7
   farAway: 0
   attackPoint: {fileID: 64239731122669213}
-  attackRange: 3
+  attackRange: 4
   attackDamage: 1
   playerLayer:
     serializedVersion: 2
@@ -514,6 +514,7 @@ MonoBehaviour:
   healthBar: {fileID: 64239729323879252}
   initialHealth: 5
   anim: {fileID: 0}
+  am: {fileID: 0}
   invincibilityDurationSeconds: 0.5
   isInvincible: 0
 --- !u!114 &64239731239430188

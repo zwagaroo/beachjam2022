@@ -13,12 +13,15 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        target = LevelManager.Instance.player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //this is in update bc couldnt work in start
+        target = LevelManager.Instance.player.transform;
+
         Vector3 direction = Vector3.RotateTowards(transform.forward, target.position, Mathf.PI, -Mathf.PI);
         transform.rotation = Quaternion.LookRotation(direction);
         if(Vector3.Distance(target.position, transform.position) < minRange && canShoot)
