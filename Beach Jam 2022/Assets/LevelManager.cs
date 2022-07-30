@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour
     private float oceanHeight = 2f;
     public GameObject oceanPrefab;
 
-    public enum WorldBoundary {UPPER_RIGHT, UPPER_LEFT, LOWER_RIGHT, LOWER_LEFT};
+    public enum WorldBoundary {UPPER_RIGHT, UPPER_LEFT, LOWER_RIGHT, LOWER_LEFT, NONE};
     Dictionary<WorldBoundary, BoxCollider> worldBoundaryColliders = new Dictionary<WorldBoundary, BoxCollider>();
     //public BoxCollider[] worldBoundaryColliders = new BoxCollider[4]; //If createOcean = true, will generate these automatically
     private float worldBoundaryColliderWidth = 1f;
@@ -95,30 +95,27 @@ public class LevelManager : MonoBehaviour
 
         //Upper Right
         BoxCollider upper_right = gameObject.AddComponent<BoxCollider>();
-        upper_right.center = new Vector3(oceanSize,colliderY,oceanSize/2f);
+        upper_right.center = getMidPointOfWorldBoundary(WorldBoundary.UPPER_RIGHT, oceanSize,colliderY);
         upper_right.size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
         worldBoundaryColliders.Add(WorldBoundary.UPPER_RIGHT, upper_right);
 
         //Upper Left
         BoxCollider upper_left = gameObject.AddComponent<BoxCollider>();
-        upper_left.center = new Vector3(oceanSize/2f,colliderY,oceanSize);
+        upper_left.center = getMidPointOfWorldBoundary(WorldBoundary.UPPER_LEFT, oceanSize,colliderY);
         upper_left.size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
         worldBoundaryColliders.Add(WorldBoundary.UPPER_LEFT, upper_left);
 
         //Lower Right
         BoxCollider lower_right = gameObject.AddComponent<BoxCollider>();
-        lower_right.center = new Vector3(oceanSize/2f,colliderY,0f);
+        lower_right.center = getMidPointOfWorldBoundary(WorldBoundary.LOWER_RIGHT, oceanSize,colliderY);
         lower_right.size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
         worldBoundaryColliders.Add(WorldBoundary.LOWER_RIGHT, lower_right);
 
         //Lower Left
         BoxCollider lower_left = gameObject.AddComponent<BoxCollider>();
-        lower_left.center = new Vector3(0f,colliderY,oceanSize/2f);
+        lower_left.center = getMidPointOfWorldBoundary(WorldBoundary.LOWER_LEFT, oceanSize,colliderY);
         lower_left.size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
         worldBoundaryColliders.Add(WorldBoundary.LOWER_LEFT, lower_left);
-
-
-
 
     }
 
@@ -205,49 +202,55 @@ public class LevelManager : MonoBehaviour
     }
  */
 
-    public Vector3 getSpawnPosOppositeWorldCollider(float mapSize, Collider exitCollider){
-        float offsetFromWorldEdge = 2f;
+    public void TransitionToNewLevel(Collider exitCollider){
+    
+        spawnPlayerOppositeWorldBoundary(getWorldBoundaryFromCollider(exitCollider));
 
-        WorldBoundary exitWorldBoundary = WorldBoundary.UPPER_LEFT;
+    }
 
+    public Vector3 getMidPointOfWorldBoundary(WorldBoundary boundary, float boundaryWidth, float y, float perpendicularOffset=0f){ //Pos offset is pointing outwards, neg offset is pointing inwards.
+        switch(boundary){ 
+            case WorldBoundary.UPPER_RIGHT:
+                return new Vector3(boundaryWidth+perpendicularOffset,y, boundaryWidth/2f);
+            case WorldBoundary.UPPER_LEFT:
+                return new Vector3(boundaryWidth/2f,y,boundaryWidth+perpendicularOffset);
+            case WorldBoundary.LOWER_RIGHT: 
+                return new Vector3(boundaryWidth/2f,y,0f-perpendicularOffset);
+            case WorldBoundary.LOWER_LEFT: 
+                return new Vector3(0f-perpendicularOffset,y,boundaryWidth/2f);
+            default:
+                return Vector3.zero; //Shouldn't get here...
+        }
+    }
+
+    public WorldBoundary getWorldBoundaryFromCollider(Collider collider){
         foreach(KeyValuePair<WorldBoundary,BoxCollider> pair in worldBoundaryColliders){
-            if((Collider)pair.Value == exitCollider){
-                exitWorldBoundary = pair.Key;
+            if((Collider)pair.Value == collider){
+                return pair.Key;
             }
         }
+        return WorldBoundary.NONE;
+    }
+
+    public void spawnPlayerOppositeWorldBoundary(WorldBoundary exitWorldBoundary){
+        float offsetFromWorldEdge = -2f;
 
         switch(exitWorldBoundary){ //Based on the direction the player just exited the map
             case WorldBoundary.UPPER_RIGHT: //Spawn player in lower left
+                player.transform.position = getMidPointOfWorldBoundary(WorldBoundary.LOWER_LEFT, oceanSize, 2f, offsetFromWorldEdge);
                 break;
             case WorldBoundary.UPPER_LEFT: //Spawn player in lower right
-            
+                player.transform.position = getMidPointOfWorldBoundary(WorldBoundary.LOWER_RIGHT, oceanSize, 2f, offsetFromWorldEdge);
                 break; 
             case WorldBoundary.LOWER_RIGHT: //Spawn player in upper left
-            
+                player.transform.position = getMidPointOfWorldBoundary(WorldBoundary.UPPER_LEFT, oceanSize, 2f, offsetFromWorldEdge);
                 break;
             case WorldBoundary.LOWER_LEFT: //Spawn player in upper right
-            
+                player.transform.position = getMidPointOfWorldBoundary(WorldBoundary.UPPER_RIGHT, oceanSize, 2f, offsetFromWorldEdge);
+                break;
+            default:
+                Debug.LogError("No registered World Boundary!");
                 break;
         }
-        return Vector3.zero;
- /*        //Lower Left
-        worldBoundaryColliders[0] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[0].center = new Vector3(0f,colliderY,oceanSize/2f);
-        worldBoundaryColliders[0].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize);
-
-        //Lower Right
-        worldBoundaryColliders[1] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[1].center = new Vector3(oceanSize/2f,colliderY,0f);
-        worldBoundaryColliders[1].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
-
-        //Upper Left
-        worldBoundaryColliders[2] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[2].center = new Vector3(oceanSize/2f,colliderY,oceanSize);
-        worldBoundaryColliders[2].size = new Vector3(oceanSize, 10f, worldBoundaryColliderWidth);
-
-        //Upper Right
-        worldBoundaryColliders[3] = gameObject.AddComponent<BoxCollider>();
-        worldBoundaryColliders[3].center = new Vector3(oceanSize,colliderY,oceanSize/2f);
-        worldBoundaryColliders[3].size = new Vector3(worldBoundaryColliderWidth, 10f, oceanSize); */
     }
 }
