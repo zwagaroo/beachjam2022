@@ -47,13 +47,13 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 7102a71bbdf6afb47adfa3522bd00e04, type: 3}
-    volume: 1
+    volume: 0.606
     pitch: 1
     source: {fileID: 0}
     loop: 1
   - name: Onwards
     clip: {fileID: 8300000, guid: 73332da5b4d2afa4fbd9b9cbec70f95d, type: 3}
-    volume: 0.262
+    volume: 0.328
     pitch: 1
     source: {fileID: 0}
     loop: 1
@@ -63,8 +63,6 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-<<<<<<< Updated upstream
-=======
   - name: swim1
     clip: {fileID: 8300000, guid: d6f78789efa31af4f89efa67b282d8b7, type: 3}
     volume: 0.66
@@ -140,9 +138,8 @@ MonoBehaviour:
   - name: TextScrollBlip
     clip: {fileID: 8300000, guid: 4c25b66cb88e99e4b8569d18b661925e, type: 3}
     volume: 0.56
-    pitch: 1.01
+    pitch: 1
     source: {fileID: 0}
     loop: 0
   currentlyPlaying: []
   currentlyPaused: []
->>>>>>> Stashed changes

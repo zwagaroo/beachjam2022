@@ -2,11 +2,13 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 public class AudioManager : MonoBehaviour
 {
 
-    public static float globalVolume = 1;
+    public static float globalVolume;
     public Sound[] sounds;
     public static AudioManager instance;
 
@@ -34,19 +36,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-    public void Play(string name){
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
-        currentlyPlaying.Add(s);
-=======
-    void Update(){
-        //volume changes
-        foreach(Sound s in sounds){
-            s.source.volume = globalVolume * s.volume;
-        }
-    }
-
     IEnumerator Clean(string name){
             yield return new WaitForSeconds(Array.Find(sounds, sound => sound.name == name).clip.length + 1);
             foreach(Sound s in currentlyPlaying.ToList()){
@@ -57,15 +46,15 @@ public class AudioManager : MonoBehaviour
     }
 
     public void Play(string name){
-        Array.Find(sounds, sound => sound.name == name).source.Play();
-/*         currentlyPlaying.Add(s); */
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.Play();
+        currentlyPlaying.Add(s);
         StartCoroutine(Clean(name));
->>>>>>> Stashed changes
     }
 
     public void Stop(string name){
-        Array.Find(sounds, s => s.name == name).source.Stop();
-        /* currentlyPlaying.Remove(currentlyPlaying.Find(s => s.name == name)); */
+        currentlyPlaying.Find(s => s.name == name).source.Stop();
+        currentlyPlaying.Remove(currentlyPlaying.Find(s => s.name == name));
     }
 
     public void Pause(string name){
