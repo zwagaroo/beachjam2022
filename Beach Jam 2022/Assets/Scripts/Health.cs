@@ -30,7 +30,13 @@ public class Health : MonoBehaviour
         
 
         currentHealth += change;
-        healthBar.value = (float)currentHealth;
+
+        if(healthBar != null)
+        {
+
+            healthBar.value = (float)currentHealth;
+
+        }
 
         print(currentHealth);
 

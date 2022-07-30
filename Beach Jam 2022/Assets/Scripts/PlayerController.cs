@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
     public float knockbackForce;
 
     public bool canAttack = true;
-    public float attackDamage;
+    public double attackDamage;
     public float coolDownSeconds;
 
     public AudioClip slap;
@@ -228,17 +228,22 @@ public class PlayerController : MonoBehaviour {
         //Collider[] hitEnemies = attackPoint.GetComponent<MarkForAttack>().inRangeEnemies.ToArray();
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
         //damage hit enemies
+        Debug.Log(hitEnemies.Length);
         foreach (Animator ani in tentacleAnims)
         {
             ani.SetTrigger("isAttacking");
         }
         anim.SetTrigger("isAttacking");
         am.Play("Player_Slap");
+        Debug.Log(hitEnemies[0] + "enemy");
         foreach (Collider enemy in hitEnemies)
         {
+            
+            
             if (enemy != null)
             {
                 var enemyHealth = enemy.gameObject.GetComponent<Health>();
+                Debug.Log(enemyHealth + "enemy health");
                 enemyHealth.changeHealth(-attackDamage);
                 if (enemyHealth.isDead())
                 {

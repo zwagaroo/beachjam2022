@@ -38,9 +38,9 @@ public class FishingBoatController : EnemyController
 			}
 		}
 		
-		print("imma bote");
+		//print("imma bote");
 		
-		print("imma bote stil");
+		//print("imma bote stil");
 		
 		heading.Normalize();
 		heading.y = 0;
