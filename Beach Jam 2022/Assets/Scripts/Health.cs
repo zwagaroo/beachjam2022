@@ -119,6 +119,10 @@ public class Health : MonoBehaviour
     {
         Debug.Log(this.name + "turned invincible!");
         isInvincible = true;
+        
+        if(gameObject.tag == "Player"){
+            am.Play("Player_Damage");
+        }
 
         if (anim != null)
         {
