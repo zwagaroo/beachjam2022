@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     [SerializeField]
     private Animator anim;
     //07/30: Heart sprite images initialized
-    public SpriteRenderer spriteRenderer;
+    public Image heartImage;
     public Sprite halfheart;
     public Sprite emptyheart;
     public AudioManager am;
@@ -36,19 +36,22 @@ public class Health : MonoBehaviour
     {
         if (currentHealth > 45 && currentHealth < 60)
         {
-            spriteRenderer.sprite = halfheart;
+            heartImage.sprite = halfheart;
             Debug.Log("Half-heart");
         }
         else if (currentHealth < 45)
         {
-            spriteRenderer.sprite = emptyheart;
+            heartImage.sprite = emptyheart;
             Debug.Log("Empty heart");
         }
     }
 
     void Update()
     {
-        ChangeSprite();
+        if(gameObject.tag == "Player")
+        {
+            ChangeSprite();
+        }
     }
 
     //the enemy will be able to access the Health of this so it can be changed.
@@ -88,7 +91,7 @@ public class Health : MonoBehaviour
     IEnumerator PlayerDeath()
     {
         var explosionObject = Instantiate(explosionPrefab, transform.position, this.transform.rotation);
-        Time.timeScale = 0;
+        GetComponent<PlayerController>().inputDisabled = true;
         transform.GetChild(0).gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
         Instantiate(tryAgainPrefab);

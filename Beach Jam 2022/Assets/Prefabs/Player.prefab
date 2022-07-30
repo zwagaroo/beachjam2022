@@ -688,8 +688,11 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   initialHealth: 10
   anim: {fileID: 5391054397365487792}
+  heartImage: {fileID: 0}
+  halfheart: {fileID: 21300000, guid: 2f9b66fadb17e4980ad801ac6124ac3c, type: 3}
+  emptyheart: {fileID: 21300000, guid: 3013bcb4606174b6eb66ef311fb90065, type: 3}
   am: {fileID: 0}
-  explosionPrefab: {fileID: 0}
+  explosionPrefab: {fileID: 7635187030058423711, guid: 34c66b35a620ada4b8e3f8517498c6d6, type: 3}
   tryAgainPrefab: {fileID: 4110363973278385075, guid: a2f82f3626f35ff4299281924720f3b2, type: 3}
   invincibilityDurationSeconds: 1
   isInvincible: 0
