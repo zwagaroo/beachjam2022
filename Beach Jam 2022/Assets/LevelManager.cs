@@ -8,41 +8,31 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
 
-    public int currentLevel = 0;
-    public int maxLevels = 2;
-    
-    //Required setup
+   //IN-SCENE DEPENDENCIES, THIS SHOULD BE ASSIGNED
+    public GameObject HUD; //should be in the level already
     public CameraFollow followCamera;
+    public GameObject ocean;
+
 
     //Player Character
     public GameObject playerPrefab;
     public GameObject player;
     public Transform playerSpawn;
 
-    //UI
-    public GameObject HUD; //should be in the level already
-    public GameObject nextLevelArrowPrefab;
-    private GameObject[] nextLevelArrows;
+ 
 
-    //Ocean
-    public GameObject ocean;
-    public bool createNewOceanAtStart = true;
+    //public GameObject nextLevelArrowPrefab;
+    //private GameObject[] nextLevelArrows;
+
+    //Ocean Dimensions
     public float oceanSize = 10f;
     private float oceanHeight = 2f;
-    public GameObject oceanPrefab;
+    private WaterVolumeHelper waterVolumeHelper;
 
     public enum WorldBoundary {UPPER_RIGHT, UPPER_LEFT, LOWER_RIGHT, LOWER_LEFT, NONE};
     Dictionary<WorldBoundary, BoxCollider> worldBoundaryColliders = new Dictionary<WorldBoundary, BoxCollider>();
-    //public BoxCollider[] worldBoundaryColliders = new BoxCollider[4]; //If createOcean = true, will generate these automatically
     private float worldBoundaryColliderWidth = 1f;
     private float worldBoundaryColliderOffset = 0f;
-
-    //public RandomlyGeneratedType[] assetsToSpawn;
-
-    //Environmental Prefabs
-    public GameObject[] islandPrefabs;
-    public GameObject[] rockPrefabs;
-    public GameObject[] treePrefabs;
 
     //Environmental Lighting Assets
     public enum WeatherState{
@@ -53,46 +43,36 @@ public class LevelManager : MonoBehaviour
     public Material daytimeSkybox;
     public Material spookySkybox;
 
-    //Enemy Spawning
-    public GameObject sailboatPrefab;
-    public GameObject pirateShipPrefab;
-    public GameObject bossShipPrefab;
-    public GameObject navalMinePrefab;
-    private List<EnemySpawn> enemies = new List<EnemySpawn>();
 
-    public List<GameObject> spawnedEnemies = new List<GameObject>();
+    private GameObject[] enemiesInScene;
 
-    public List<Vector2> spPoints = new List<Vector2>();
-
-    //Implementation with ocean scene
-    public WaterVolumeHelper waterVolumeHelper;
-
+   
     // Start is called before the first frame update
     void Start()
     {
         //Set the LevelManager Singleton Instance
         Instance = this;
 
+        //Get all enemies in scene
+        enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
         
         //Setup weather
         SetWeather(levelWeather);
 
-        //Create ocean and world colliders
-        if(createNewOceanAtStart){
-            ocean = Instantiate(oceanPrefab, new Vector3(0.5f, 0, 0.5f), Quaternion.identity);
-        }
-        SetupOcean();
+        SetupColliders();
         waterVolumeHelper = ocean.GetComponent<WaterVolumeHelper>();
 
         //Setup player
         SetupPlayer();
-        GenerateLevel();
-        FinishLevel();
-
+        
+        //GenerateLevel();
     }
 
     void Update(){
         //check to see if any enemies;
+        if(enemiesInScene.Length == 0){
+            FinishLevel();
+        }
     }
 
     void SetupPlayer(){
@@ -105,10 +85,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void SetupOcean(){
+    void SetupColliders(){
         ocean.transform.GetChild(0).localScale = new Vector3(oceanSize, oceanHeight, oceanSize);
-        Debug.Log("OCEAN GENERATED");
-
         float colliderY = 2f;
 
         //Upper Right
@@ -146,82 +124,79 @@ public class LevelManager : MonoBehaviour
         DynamicGI.UpdateEnvironment();
     }
 
-    void GenerateLevel(){
-        Debug.Log("GENERATING LEVEL");
-        SetWorldBoundariesActive(true);
-        SpawnEnemies();
-    }
+    // void GenerateLevel(){
+    //     Debug.Log("GENERATING LEVEL");
+    //     SetWorldBoundariesActive(true);
+    // }
 
-    void SpawnEnemies()
-    {
-        int numberOfEnemies = Random.Range(2, 7); //Generate random number of enemies
-        int numberOfMines = Random.Range(0, 6);
-        int numberOfIslands = Random.Range(5, 15);
+    // void SpawnEnemies()
+    // {
+    //     int numberOfEnemies = Random.Range(2, 7); //Generate random number of enemies
+    //     int numberOfMines = Random.Range(0, 6);
+    //     int numberOfIslands = Random.Range(5, 15);
 
-        int numReservedPoints = numberOfEnemies+numberOfMines+numberOfIslands; //TODO: make this a sum of all the above random pieces
+    //     int numReservedPoints = numberOfEnemies+numberOfMines+numberOfIslands; //TODO: make this a sum of all the above random pieces
 
-        spPoints = PoissonDiscSampling.GeneratePoints(2f, new Vector2(oceanSize, oceanSize), numReservedPoints);
+    //     spPoints = PoissonDiscSampling.GeneratePoints(2f, new Vector2(oceanSize, oceanSize), numReservedPoints);
 
-        /*
-        foreach(Vector2 coord in spPoints){
-            Debug.Log(coord);
-            GameObject mine = Instantiate(navalMinePrefab, new Vector3(coord.x, 2f, coord.y), Quaternion.identity);
-        }
-        */
+    //     /*
+    //     foreach(Vector2 coord in spPoints){
+    //         Debug.Log(coord);
+    //         GameObject mine = Instantiate(navalMinePrefab, new Vector3(coord.x, 2f, coord.y), Quaternion.identity);
+    //     }
+    //     */
 
-        //Generate Islands
-        for(int i =0; i<numberOfIslands; i+=1){
-            int randomIndex = Random.Range(0, spPoints.Count);
-            Vector2 spawnPos = spPoints[randomIndex];
-            spPoints.RemoveAt(randomIndex);
-            GameObject island = Instantiate(islandPrefabs[Random.Range(0,islandPrefabs.Length)], new Vector3(spawnPos.x, 1f, spawnPos.y), Quaternion.identity);
-            island.tag = "RandomlyGeneratedObject";
-        }
-
+    //     //Generate Islands
+    //     for(int i =0; i<numberOfIslands; i+=1){
+    //         int randomIndex = Random.Range(0, spPoints.Count);
+    //         Vector2 spawnPos = spPoints[randomIndex];
+    //         spPoints.RemoveAt(randomIndex);
+    //         GameObject island = Instantiate(islandPrefabs[Random.Range(0,islandPrefabs.Length)], new Vector3(spawnPos.x, 1f, spawnPos.y), Quaternion.identity);
+    //         island.tag = "RandomlyGeneratedObject";
+    //     }
 
 
-        //for(int i = 0; i)
 
-        /*
-        for (int i=0; i < numberOfEnemies; i+= 1)
-        {
-            int enemyIndex = Random.Range(0, enemyTypePrefabs.Length);
-            Debug.Log(enemyIndex);
-            GameObject enemy = enemyTypePrefabs[enemyIndex];
+    //     //for(int i = 0; i)
 
-            int spIndex = Random.Range(0, spPoints.Count);
-            Vector2 spawn = spPoints[spIndex];
-            Vector3 spPt = new Vector3(spawn.x - ((spawnRangeMax.x-spawnRangeMin.x)/2), 1, spawn.y - ((spawnRangeMax.y - spawnRangeMin.y) / 2));
-            EnemySpawn enemySp = new EnemySpawn(enemy, spPt);
-            enemies.Add(enemySp);
-        }
-        foreach (EnemySpawn enemySp in enemies)
-        {
-            GameObject temp = Instantiate(enemySp.enemy, enemySp.spawnPoint, Quaternion.Euler(0,0,0));
-            if(temp.GetComponent<EnemyController>() != null)
-            {
-                temp.GetComponent<EnemyController>().target = player.transform;
-            }
+    //     /*
+    //     for (int i=0; i < numberOfEnemies; i+= 1)
+    //     {
+    //         int enemyIndex = Random.Range(0, enemyTypePrefabs.Length);
+    //         Debug.Log(enemyIndex);
+    //         GameObject enemy = enemyTypePrefabs[enemyIndex];
 
-            if(temp.GetComponentInChildren<Turret>() != null)
-            {
-                temp.GetComponentInChildren<Turret>().target = player.transform;
-            }
-        }*/
-    }
+    //         int spIndex = Random.Range(0, spPoints.Count);
+    //         Vector2 spawn = spPoints[spIndex];
+    //         Vector3 spPt = new Vector3(spawn.x - ((spawnRangeMax.x-spawnRangeMin.x)/2), 1, spawn.y - ((spawnRangeMax.y - spawnRangeMin.y) / 2));
+    //         EnemySpawn enemySp = new EnemySpawn(enemy, spPt);
+    //         enemies.Add(enemySp);
+    //     }
+    //     foreach (EnemySpawn enemySp in enemies)
+    //     {
+    //         GameObject temp = Instantiate(enemySp.enemy, enemySp.spawnPoint, Quaternion.Euler(0,0,0));
+    //         if(temp.GetComponent<EnemyController>() != null)
+    //         {
+    //             temp.GetComponent<EnemyController>().target = player.transform;
+    //         }
 
-    public void SetWorldBoundariesActive(bool isActive){
-        foreach(Collider collider in worldBoundaryColliders.Values){
-            collider.isTrigger = !isActive;
-        }
-    }
+    //         if(temp.GetComponentInChildren<Turret>() != null)
+    //         {
+    //             temp.GetComponentInChildren<Turret>().target = player.transform;
+    //         }
+    //     }*/
+    // }
+
+    // public void SetWorldBoundariesActive(bool isActive){
+    //     foreach(Collider collider in worldBoundaryColliders.Values){
+    //         collider.isTrigger = !isActive;
+    //     }
+    // }
 
     public void FinishLevel()
     {
         Debug.Log("Level complete!");
-        SetWorldBoundariesActive(false);
-        currentLevel += 1;
-        //TODO: Instantiate and populate nextLevelArrows here
+        
     }
 
  /*    void OnTriggerEnter(Collider other){ //When player leaves map, create new level
