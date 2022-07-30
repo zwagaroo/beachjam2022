@@ -44,8 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4130d772379d08a41b950d304d8d1981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGMList:
-  - Onwards
+  BGMList: []
   nextUp: 
   alreadyPlayed: []
   am: {fileID: 0}
