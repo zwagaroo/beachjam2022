@@ -13,9 +13,9 @@ public class PauseGame : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
         else
         {
