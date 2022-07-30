@@ -82,7 +82,7 @@ public class Health : MonoBehaviour
 
         print(currentHealth);
 
-        StartCoroutine(BecomeTemporarilyInvincible());
+        //StartCoroutine(BecomeTemporarilyInvincible());
     }
 
     IEnumerator PlayerDeath()

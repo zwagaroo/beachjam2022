@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8529446960600898092}
   - component: {fileID: 8529446960600898091}
-  - component: {fileID: 8529446960600898090}
+  - component: {fileID: 7061609314257473542}
   m_Layer: 0
   m_Name: Exit
   m_TagString: Untagged
@@ -47,7 +47,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7, y: 9.515166, z: 19.026058}
   m_Center: {x: -5, y: 4.257582, z: 1.9545937}
---- !u!114 &8529446960600898090
+--- !u!114 &7061609314257473542
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8529446960600898089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db45f26bf53ea284d9cfdb6053e1d4fc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8288749339d2b6544b7519f0b4938c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: level2
@@ -85,7 +85,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8529446961094947157}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -9.99, y: 3.43, z: -2.67}
+  m_LocalPosition: {x: -9.99, y: 3.2, z: -2.67}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

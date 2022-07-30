@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public GameObject HUD; //should be in the level already
     public CameraFollow followCamera;
     public GameObject ocean;
+    public GameObject exitZone;
 
 
     //Player Character
@@ -55,6 +56,7 @@ public class LevelManager : MonoBehaviour
 
         //Setup player
         SetupPlayer();
+        exitZone.SetActive(false);
 
         //Setup  all enemies in scene
         enemiesInScene = GameObject.FindGameObjectsWithTag("Enemy");
@@ -76,7 +78,7 @@ public class LevelManager : MonoBehaviour
 
     void Update(){
         //check to see if any enemies;
-        if(enemiesInScene.Length == 0){
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length == 0){
             FinishLevel();
         }
     }
@@ -206,6 +208,7 @@ public class LevelManager : MonoBehaviour
     public void FinishLevel()
     {
         Debug.Log("Level complete!");
+        exitZone.SetActive(true);
         
     }
 
