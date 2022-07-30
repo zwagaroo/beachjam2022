@@ -688,7 +688,9 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   initialHealth: 100
   anim: {fileID: 5391054397365487792}
-  am: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  halfheart: {fileID: 0}
+  emptyheart: {fileID: 0}
   invincibilityDurationSeconds: 1
   isInvincible: 0
 --- !u!114 &5391054397713672593

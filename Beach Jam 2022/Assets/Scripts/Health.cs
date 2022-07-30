@@ -10,24 +10,45 @@ public class Health : MonoBehaviour
     private double currentHealth;
     [SerializeField]
     private Animator anim;
-    public AudioManager am;
+
+    //07/30: Heart sprite images initialized
+    public SpriteRenderer spriteRenderer;
+    public Sprite halfheart;
+    public Sprite emptyheart;
+
     // Start is called before the first frame update
     void Start()
     {
-        am = FindObjectOfType<AudioManager>();
         currentHealth = initialHealth;
         healthBar.maxValue = (float)initialHealth;
         healthBar.value = (float)currentHealth;
         print(currentHealth);
     }
 
-    //the enemy will be able to access the Health of this so it can be changed.
-    public void changeHealth(double change){
-        if (isInvincible) return;
-        if(gameObject.tag == "Player"){
-            am.Play("Player_Damage");
+    // Displays the hearts differently based on amount of health
+    public void ChangeSprite()
+    {
+        if (currentHealth > 45 && currentHealth < 60)
+        {
+            spriteRenderer.sprite = halfheart;
+            Debug.Log("Half-heart");
         }
-        
+        else if (currentHealth < 45)
+        {
+            spriteRenderer.sprite = emptyheart;
+            Debug.Log("Empty heart");
+        }
+    }
+
+    void Update()
+    {
+        ChangeSprite();
+    }
+
+    //the enemy will be able to access the Health of this so it can be changed.
+    public void changeHealth(double change)
+    {
+        if (isInvincible) return;
 
         currentHealth += change;
         healthBar.value = (float)currentHealth;
@@ -37,7 +58,8 @@ public class Health : MonoBehaviour
         StartCoroutine(BecomeTemporarilyInvincible());
     }
 
-    public bool isDead(){
+    public bool isDead()
+    {
         return (currentHealth <= 0);
     }
 
@@ -47,21 +69,21 @@ public class Health : MonoBehaviour
 
     private IEnumerator BecomeTemporarilyInvincible()
     {
-        Debug.Log(this.name +"turned invincible!");
+        Debug.Log(this.name + "turned invincible!");
         isInvincible = true;
 
-        if(anim != null)
+        if (anim != null)
         {
             anim.SetBool("isInvincible", true);
         }
         yield return new WaitForSeconds(invincibilityDurationSeconds);
 
-        if(anim != null)
+        if (anim != null)
         {
             anim.SetBool("isInvincible", false);
         }
         isInvincible = false;
-        Debug.Log(this.name +"is no longer invincible!");
-    
+        Debug.Log(this.name + "is no longer invincible!");
+
     }
 }
