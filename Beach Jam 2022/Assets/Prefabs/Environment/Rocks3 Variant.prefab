@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9210783650896191218, guid: 025acb49b1e3cc6498647eabceba31c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -9040625265803825037, guid: 025acb49b1e3cc6498647eabceba31c7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.55
@@ -69,13 +73,21 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ee3bd22fa0745604f9a8dbeda61dd61b, type: 2}
     - target: {fileID: 919132149155446097, guid: 025acb49b1e3cc6498647eabceba31c7, type: 3}
       propertyPath: m_Name
-      value: Rocks3
+      value: Rocks3 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1550075281242681541, guid: 025acb49b1e3cc6498647eabceba31c7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ee3bd22fa0745604f9a8dbeda61dd61b, type: 2}
     - target: {fileID: 2442534391076987964, guid: 025acb49b1e3cc6498647eabceba31c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591407556339684109, guid: 025acb49b1e3cc6498647eabceba31c7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7074954821057788383, guid: 025acb49b1e3cc6498647eabceba31c7, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
