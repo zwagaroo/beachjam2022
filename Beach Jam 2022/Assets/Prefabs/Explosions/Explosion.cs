@@ -19,6 +19,7 @@ public class Explosion : MonoBehaviour
     public IEnumerator DeathTimer()
     {
         yield return new WaitUntil(() => particleSystem.isPlaying == false);
+        
         Destroy(this.gameObject);
     }
 }

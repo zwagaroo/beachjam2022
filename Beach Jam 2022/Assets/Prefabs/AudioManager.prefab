@@ -47,7 +47,7 @@ MonoBehaviour:
   sounds:
   - name: Theme
     clip: {fileID: 8300000, guid: 7102a71bbdf6afb47adfa3522bd00e04, type: 3}
-    volume: 0.606
+    volume: 0.335
     pitch: 1
     source: {fileID: 0}
     loop: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
   - name: Player_Damage
-    clip: {fileID: 8300000, guid: 376419a5424a9e3418d72f3a3afce045, type: 3}
-    volume: 0.56
+    clip: {fileID: 8300000, guid: d9be9b1b71d6028459899811d686c44b, type: 3}
+    volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
@@ -138,6 +138,18 @@ MonoBehaviour:
   - name: TextScrollBlip
     clip: {fileID: 8300000, guid: 4c25b66cb88e99e4b8569d18b661925e, type: 3}
     volume: 0.56
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Ambience
+    clip: {fileID: 8300000, guid: 59b36f20462e10744b7aadc8fb966b5c, type: 3}
+    volume: 0.343
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Explosion
+    clip: {fileID: 8300000, guid: dd7db12b0d2e99b47b9636c37e5a3e91, type: 3}
+    volume: 0.336
     pitch: 1
     source: {fileID: 0}
     loop: 0
