@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 
+
 public class MusicPlayer : MonoBehaviour
 {
 
@@ -17,7 +18,7 @@ public class MusicPlayer : MonoBehaviour
     {
 
         am = FindObjectOfType<AudioManager>();
-        var rand = UnityEngine.Random.RangeInt(1,2);
+        var rand = UnityEngine.Random.Range(1,3);
         if(rand == 1){
             nextUp = "Onwards";
         }
