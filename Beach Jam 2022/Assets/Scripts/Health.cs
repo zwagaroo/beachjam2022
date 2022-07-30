@@ -12,14 +12,18 @@ public class Health : MonoBehaviour
     private Animator anim;
     public AudioManager am;
     public GameObject explosionPrefab;
+    public GameObject tryAgainPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         am = FindObjectOfType<AudioManager>();
         currentHealth = initialHealth;
-        healthBar.maxValue = (float)initialHealth;
-        healthBar.value = (float)currentHealth;
+        if(healthBar != null)
+        {
+            healthBar.maxValue = (float)initialHealth;
+            healthBar.value = (float)currentHealth;
+        }
         print(currentHealth);
     }
 
@@ -44,6 +48,7 @@ public class Health : MonoBehaviour
         if (isDead()){
             if(gameObject.tag == "Player")
             {
+                StartCoroutine(PlayerDeath());
                 //Player death sequence
             }
             else
@@ -55,6 +60,18 @@ public class Health : MonoBehaviour
         print(currentHealth);
 
         StartCoroutine(BecomeTemporarilyInvincible());
+    }
+
+    IEnumerator PlayerDeath()
+    {
+        var explosionObject = Instantiate(explosionPrefab, transform.position, this.transform.rotation);
+        Time.timeScale = 0;
+        transform.GetChild(0).gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        Instantiate(tryAgainPrefab);
+        Destroy(this.gameObject);
+        Debug.Log("explosion done");
+
     }
 
     public void Death()

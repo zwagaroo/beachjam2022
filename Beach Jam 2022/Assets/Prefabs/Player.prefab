@@ -686,9 +686,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  initialHealth: 100
+  initialHealth: 10
   anim: {fileID: 5391054397365487792}
   am: {fileID: 0}
+  explosionPrefab: {fileID: 0}
+  tryAgainPrefab: {fileID: 4110363973278385075, guid: a2f82f3626f35ff4299281924720f3b2, type: 3}
   invincibilityDurationSeconds: 1
   isInvincible: 0
 --- !u!114 &5391054397713672593
