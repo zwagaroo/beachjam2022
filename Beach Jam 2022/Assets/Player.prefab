@@ -390,12 +390,16 @@ GameObject:
   - component: {fileID: 5391054397713672598}
   - component: {fileID: 5391054397713672595}
   - component: {fileID: 6580564183772732916}
-  - component: {fileID: 3645545334106746087}
   - component: {fileID: 5391054397713672593}
   - component: {fileID: 3534269753029274516}
   - component: {fileID: 5391054397713672592}
   - component: {fileID: 1515588609}
   - component: {fileID: 1515588608}
+<<<<<<< Updated upstream
+=======
+  - component: {fileID: 90696193486750711}
+  - component: {fileID: 3712396564383353448}
+>>>>>>> Stashed changes
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -466,6 +470,7 @@ MonoBehaviour:
   coolDownSeconds: 1
   aSource: {fileID: 0}
   slap: {fileID: 0}
+<<<<<<< Updated upstream
 --- !u!114 &3645545334106746087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +488,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   invincibilityDurationSeconds: 1
   isInvincible: 0
+=======
+>>>>>>> Stashed changes
 --- !u!114 &5391054397713672593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,6 +631,7 @@ PrefabInstance:
     - target: {fileID: 8570920685510014573, guid: 429999062a55b400e8c26ecdeb4f6491, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
+<<<<<<< Updated upstream
       objectReference: {fileID: 0}
     - target: {fileID: 8570920685510014573, guid: 429999062a55b400e8c26ecdeb4f6491, type: 3}
       propertyPath: m_LocalRotation.x
@@ -675,3 +683,31 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8570920685510014573, guid: 429999062a55b400e8c26ecdeb4f6491, type: 3}
   m_PrefabInstance: {fileID: 8570920684154561330}
   m_PrefabAsset: {fileID: 0}
+=======
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &3712396564383353448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5391054397713672599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b292dfc708975b44b4c88c3cf21cc9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  initialHealth: 0
+  anim: {fileID: 0}
+  invincibilityDurationSeconds: 0
+  isInvincible: 0
+>>>>>>> Stashed changes
