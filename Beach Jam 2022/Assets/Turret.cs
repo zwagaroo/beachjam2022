@@ -10,6 +10,13 @@ public class Turret : MonoBehaviour
     public float bulletSpeed;
     public bool canShoot = true;
     public float shootDelay;
+    public AudioManager am;
+    // Start is called before the first frame update
+    void Start()
+    {
+        target = LevelManager.Instance.player.transform;
+        am = FindObjectOfType<AudioManager>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -46,6 +53,7 @@ public class Turret : MonoBehaviour
         Vector3 direction = Vector3.RotateTowards(newball.transform.forward, target.position, 2 * Mathf.PI, 0);
         newball.transform.rotation = Quaternion.LookRotation(direction);
         newball.GetComponent<CannonBallProjectile>().target = heading;
+        am.Play("CannonShot");
         //newball.GetComponent<Rigidbody>().velocity = -newball.transform.forward * bulletSpeed;
         //newball.GetComponent<InkProjectile>().target = new Vector3(heading.y*Mathf.Cos(30)*Mathf.Sin(45) - heading.x*Mathf.Sin(45), 2f, heading.y * Mathf.Cos(30) * Mathf.Sin(45) + heading.x * Mathf.Sin(45));
         //newball.GetComponent<InkProjectile>().target = new Vector3(heading.y * Mathf.Sin(45) + heading.x * Mathf.Sin(45), 0, heading.y * Mathf.Sin(45) - heading.x * Mathf.Sin(45));

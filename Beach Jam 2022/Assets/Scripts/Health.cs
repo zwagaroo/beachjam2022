@@ -10,7 +10,7 @@ public class Health : MonoBehaviour
     private double currentHealth;
     [SerializeField]
     private Animator anim;
-
+    public AudioManager am;
     //07/30: Heart sprite images initialized
     public SpriteRenderer spriteRenderer;
     public Sprite halfheart;
@@ -29,6 +29,7 @@ public class Health : MonoBehaviour
             healthBar.value = (float)currentHealth;
         }
         print(currentHealth);
+        am = FindObjectOfType<AudioManager>();
     }
 
     // Displays the hearts differently based on amount of health
@@ -55,7 +56,9 @@ public class Health : MonoBehaviour
     public void changeHealth(double change)
     {
         if (isInvincible) return;
-
+        if(gameObject.tag == "Player"){
+            am.Play("Player_Damage");
+        }
         currentHealth += change;
 
         if(healthBar != null)
