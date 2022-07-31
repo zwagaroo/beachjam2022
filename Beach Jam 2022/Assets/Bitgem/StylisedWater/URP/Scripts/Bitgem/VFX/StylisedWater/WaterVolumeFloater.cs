@@ -20,7 +20,7 @@ namespace Bitgem.VFX.StylisedWater
 
         void Update()
         {
-            if(WaterVolumeHelper){
+            if(WaterVolumeHelper != null){
                 var instance = WaterVolumeHelper ? WaterVolumeHelper : WaterVolumeHelper.Instance;
                 if (!instance)
                 {
